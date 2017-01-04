@@ -9,16 +9,16 @@ var ExecutiveSchema = new Schema({
   title:{
     type: String
   },
-  branch: {
+  handle: {
+    type: String
+  },
+  position:{
     type: String
   },
   person_office:{
     type: String
   },
-  handle:{
-    type: String
-  },
-  position:{
+  branch:{
     type: String
   },
   party:{
