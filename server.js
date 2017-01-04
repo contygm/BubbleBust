@@ -4,8 +4,11 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-// Require History Schema
-var History = require("./models/History");
+// Require Schemas
+var Executive = require("./models/Executive");
+var Legislative = require("./models/Legislative");
+var Organization = require("./models/Organization");
+var Parties = require("./models/Parties");
 
 // Create Instance of Express
 var app = express();
@@ -23,8 +26,10 @@ app.use(express.static("./public"));
 
 // -------------------------------------------------
 
-// MongoDB Configuration configuration (Change this URL to your own DB)
-mongoose.connect("mongodb://admin:codingrocks@ds023664.mlab.com:23664/reactlocate");
+
+//mongodb://heroku_nhk3bbmv:7dml376seb3b2ousnha7pg75s@ds155418.mlab.com:55418/heroku_nhk3bbmv
+
+mongoose.connect("mongodb://heroku_nhk3bbmv:7dml376seb3b2ousnha7pg75s@ds155418.mlab.com:55418/heroku_nhk3bbmv");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
