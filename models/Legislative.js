@@ -25,5 +25,5 @@ var LegistlativeSchema = new Schema({
   }
 });
 
-var Legistlative = mongoose.model("Legistlative", SenateSchema);
+var Legistlative = mongoose.model("Legistlative", LegistlativeSchema);
 module.exports = Legistlative;

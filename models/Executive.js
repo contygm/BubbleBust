@@ -1,3 +1,7 @@
+// ALSO WORKS FOR JUDICIAL
+// there's only one entry and it follows the model
+
+
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
@@ -22,5 +26,5 @@ var ExecutiveSchema = new Schema({
   }
 });
 
-var Executive = mongoose.model("Executive", SenateSchema);
+var Executive = mongoose.model("Executive", ExecutiveSchema);
 module.exports = Executive;
