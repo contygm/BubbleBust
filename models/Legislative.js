@@ -5,22 +5,22 @@ var LegistlativeSchema = new Schema({
   title:{
     type: String
   },
-  branch: {
-    type: String
-  },
-  person_office:{
-    type: String
-  },
-  handle:{
+  state: {
     type: String
   },
   position:{
     type: String
   },
-  party:{
+  person_office:{
     type: String
   },
-  state:{
+  branch:{
+    type: String
+  },
+  handle:{
+    type: String
+  },
+  party:{
     type: String
   }
 });

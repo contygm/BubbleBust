@@ -2,19 +2,21 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var nonGovSchema = new Schema({
-	branch: {
-		type: String
-	},
-	person_office:{
+	title: {
 		type: String
 	},
 	handle:{
 		type: String
 	},
-	title:{
+	person_office:{
+		type: String
+	},
+	branch:{
 		type: String
 	}
 });
 
 var nonGov = mongoose.model("nonGov", nonGovSchema);
 module.exports = nonGov;
+
+//mongoimport -h ds155418.mlab.com:55418 -d heroku_nhk3bbmv --collection Organizations -u contygm -p contygm --file Organization.csv --type csv --headerline

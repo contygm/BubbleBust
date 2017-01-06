@@ -1,7 +1,7 @@
 {
-  "name": "react-example",
+  "name": "BubbleBust",
   "version": "1.0.0",
-  "description": "",
+  "description": "MERN app; news and information hub",
   "main": "public/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +9,7 @@
     "start": "node server",
     "build": "webpack"
   },
-  "author": "Ahmed Haque",
+  "author": "AntiBubbleficationSquad",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.12.0",
