@@ -87,7 +87,7 @@ app.get("/twitter/:collection", function(req, res) {
 					
 					client.get("statuses/user_timeline", params, function(error, tweets, response) {
 					    if (!error) {
-					      res.send(response.name +" a.k.a "+ response.screen_name +"<br>"+ response.text);
+					      res.send(response);
 					    }
 					});
 	    		}			
