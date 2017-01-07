@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-var LegistlativeSchema = new Schema({
+var LegislativeSchema = new Schema({
   title:{
     type: String
   },
@@ -25,5 +25,5 @@ var LegistlativeSchema = new Schema({
   }
 });
 
-var Legistlative = mongoose.model("Legistlative", LegistlativeSchema);
-module.exports = Legistlative;
+var Legislative = mongoose.model("Legislative", LegislativeSchema);
+module.exports = Legislative;

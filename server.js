@@ -56,21 +56,19 @@ app.get("/", function(req, res) {
 app.get("/twitter/:collection", function(req, res) {
 	// get branch from drop down
 	var collection = req.params.collection;
-	var val = req.body.value;
 
-	console.log(collection, val);
+	console.log(collection);
 
 	// get records based on branch
-	if (collection = "Legislative"){
-		Legislative.find({}, function(err, doc) {
-		    if (err) {
-		      console.log(err);
-		    }
-		    else {
-		      res.send(doc);
-		    }
-		})
-	}
+	Legislative.find({}, function(err, doc) {
+	    if (err) {
+	      console.log(err);
+	    }
+	    else {
+	      res.send(doc);
+	    }
+	})
+
 });
 
 // -------------------------------------------------
