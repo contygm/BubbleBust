@@ -6,6 +6,12 @@ var mongoose = require("mongoose");
 var Promise = require("bluebird");
 mongoose.Promise = Promise;
 
+var twitterAPI = require('node-twitter-api');
+var twitter = new twitterAPI({
+    consumerKey: 'DET3lqXYoKyT9jAebSHQFmgJ8',
+    consumerSecret: 'FtEuum2jzoXlEZQT8dNn2jJxC8jiYdC1AQm3gsxiV0GiMkMZKF'
+});
+
 // Require Schemas
 var Executive = require("./models/Executive");
 var Legislative = require("./models/Legislative");
@@ -51,9 +57,12 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+
+
 // TODO: switch case when it's working
 // TODO: controller file
 // TODO: handle org types
+// GET npm install node-twitter-api
 app.get("/twitter/:collection", function(req, res) {
 	// get branch from drop down
 	var collection = req.params.collection;
