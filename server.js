@@ -51,13 +51,14 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-// switch case when it's working
-// and controller file
+// TODO: switch case when it's working
+// TODO: controller file
+// TODO: handle org types
 app.get("/twitter/:collection", function(req, res) {
 	// get branch from drop down
 	var collection = req.params.collection;
 
-	console.log(collection, "Party");
+	console.log(collection);
 
 	// get records based on branch
 	Parties.find({}, function(err, doc) {
