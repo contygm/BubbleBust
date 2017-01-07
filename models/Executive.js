@@ -26,5 +26,5 @@ var ExecutiveSchema = new Schema({
   }
 });
 
-var Executive = mongoose.model("Executive", ExecutiveSchema);
+var Executive = mongoose.model("Executive", ExecutiveSchema, "Executive");
 module.exports = Executive;

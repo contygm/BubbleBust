@@ -22,5 +22,5 @@ var PartiesSchema = new Schema({
   }
 });
 
-var Parties = mongoose.model("Parties", PartiesSchema);
+var Parties = mongoose.model("Parties", PartiesSchema, "Parties");
 module.exports = Parties;

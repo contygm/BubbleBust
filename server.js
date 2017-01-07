@@ -57,10 +57,10 @@ app.get("/twitter/:collection", function(req, res) {
 	// get branch from drop down
 	var collection = req.params.collection;
 
-	console.log(collection);
+	console.log(collection, "Party");
 
 	// get records based on branch
-	Legislative.find({}, function(err, doc) {
+	Parties.find({}, function(err, doc) {
 	    if (err) {
 	      console.log(err);
 	    }
