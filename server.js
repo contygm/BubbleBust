@@ -3,6 +3,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var Promise = require("bluebird");
+mongoose.Promise = Promise;
 
 // Require Schemas
 var Executive = require("./models/Executive");
@@ -28,6 +30,8 @@ app.use(express.static("./public"));
 
 
 //mongodb://heroku_nhk3bbmv:7dml376seb3b2ousnha7pg75s@ds155418.mlab.com:55418/heroku_nhk3bbmv
+//mongodb://heroku_nhk3bbmv:7dml376seb3b2ousnha7pg75s@ds155418.mlab.com:55418/heroku_nhk3bbmv
+
 
 mongoose.connect("mongodb://heroku_nhk3bbmv:7dml376seb3b2ousnha7pg75s@ds155418.mlab.com:55418/heroku_nhk3bbmv");
 var db = mongoose.connection;
@@ -45,6 +49,28 @@ db.once("open", function() {
 // Main "/" Route. This will redirect the user to our rendered React application
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
+});
+
+// switch case when it's working
+// and controller file
+app.get("/twitter/:collection", function(req, res) {
+	// get branch from drop down
+	var collection = req.params.collection;
+	var val = req.body.value;
+
+	console.log(collection, val);
+
+	// get records based on branch
+	if (collection = "Legislative"){
+		Legislative.find({}, function(err, doc) {
+		    if (err) {
+		      console.log(err);
+		    }
+		    else {
+		      res.send(doc);
+		    }
+		})
+	}
 });
 
 // -------------------------------------------------

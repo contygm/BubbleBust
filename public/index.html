@@ -10,6 +10,46 @@
 
 <body>
 
+		<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Brand</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<!-- Twitter dropdown -->
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Twitter<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/twitter/Legislative" value="Legislative" id="Legis">Senate</a></li>						
+							<li><a href="/twitter/Legislative" value="Non-Profit" id="Non-Pro">Non-Profit Organization</a></li>
+							<li><a href="/twitter/Legislative" value="Research" id="Res">Research Organization</a></li>
+							<li><a href="/twitter/Legislative" value="ThinkTank" id="T-Tank">Think Tank</a></li>
+							<li><a href="/twitter/Legislative" value="Judicial" id="Jud">Judicial Branch</a></li>
+							<li><a href="/twitter/Legislative" value="Parties" id="Party">Political Parties</a></li>
+						</ul>
+					</li>
+				</ul>
+				<!-- Twitter search bar -->
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+					<input type="text" class="form-control" placeholder="News Topic">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
 	<h2>Hey, the index html is working. Good job.</h2>
 
 	<!-- This is where React will deploy the contents it generates -->
