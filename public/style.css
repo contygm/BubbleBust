@@ -31,7 +31,7 @@ p {
 
 .jumbotron {
   line-height: .5;
- background-image: url("../images/bubble.jpeg") no-repeat center center fixed;
+ background-image: url("bubble.jpeg") no-repeat center center fixed;
   background-color: black;
   height: 100px;
   font-size: 75px;
@@ -43,7 +43,7 @@ p {
 
 body { 
   color: white;  
-  background: url("../images/bubble.jpeg") no-repeat center center fixed; 
+  background: url("bubble.jpeg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -89,21 +89,7 @@ img {
 }
 
 }
-/*
-.jumbotron {
-    margin-bottom: 0px;
-    background-position: 0% 25%; 
-    background-size: cover;
-    background-repeat: no-repeat; 
-    color: white;
-    text-shadow: black 0.3em 0.3em 0.3em;
-    height: 500px;
-    vertical-align: center;
-    background-color: black;
-    font-family: Georgia, serif;
-    text-align: center;
-} 
-*/
+
 .btn{
   background-color: lightblue;
   color: red;
