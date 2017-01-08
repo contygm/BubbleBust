@@ -47,32 +47,6 @@ db.once("open", function() {
 
 // -------------------------------------------------
 
-// Main "/" Route. This will redirect the user to our rendered React application
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
-// TODO: switch case when it's working
-// TODO: controller file
-// TODO: handle org types
-// GET npm install node-twitter-api
-app.get("/twitter/:collection", function(req, res) {
-	// get branch from drop down
-	var collection = req.params.collection;
-
-	console.log(collection);
-
-	// get records based on branch
-	Parties.find({}, function(err, doc) {
-	    if (err) {
-	      console.log(err);
-	    }
-	    else {
-	    	res.send(doc);
-	    }
-	});
-});
-
 var routes = require("./controllers/Routes.js");
 app.use("/", routes);
 
