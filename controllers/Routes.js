@@ -52,7 +52,7 @@ router.get("/twitter/:collection/:branch", function(req, res) {
 			});
 			break;
 		case "Legislative":
-			Legislative.find({branch: {$eq: branch}}, function(err, doc) {
+			Legislative.find({position: {$eq: branch}}, function(err, doc) {
 			    if (err) {
 			      console.log(err);
 			    }
