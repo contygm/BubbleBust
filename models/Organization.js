@@ -16,7 +16,7 @@ var OrganizationSchema = new Schema({
 	}
 });
 
-var Organization = mongoose.model("Organization", OrganizationSchema, "Organization");
+var Organization = mongoose.model("Organization", OrganizationSchema, "Organizations");
 module.exports = Organization;
 
 //mongoimport -h ds155418.mlab.com:55418 -d heroku_nhk3bbmv --collection Organizations -u contygm -p contygm --file Organization.csv --type csv --headerline
