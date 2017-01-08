@@ -62,7 +62,7 @@ router.get("/twitter/:collection/:branch", function(req, res) {
 			});
 			break;
 		case "Parties":
-			Parties.find({branch: {$eq: branch}}, function(err, doc) {
+			Parties.find({}, function(err, doc) {
 			    if (err) {
 			      console.log(err);
 			    }
