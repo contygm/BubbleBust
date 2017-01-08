@@ -12,29 +12,35 @@ var Parties = require("../models/Parties");
 
 
 router.get("/", function (req, res) {
-	res.render("public/index.html");
+	res.sendFile(__dirname + "/public/index.html");
 });
 
 
 // TODO: switch case when it's working
 // TODO: handle org types
 // GET twitter
-// app.get("/twitter/:collection", function(req, res) {
-// 	// get branch from drop down
-// 	var collection = req.params.collection;
 
-// 	console.log(collection);
 
-// 	// get records based on branch
-// 	Parties.find({}, function(err, doc) {
-// 	    if (err) {
-// 	      console.log(err);
-// 	    }
-// 	    else {
-// 	    	res.send(doc);
-// 	    }
-// 	});
-// });
+router.get("/twitter/:collection/:branch", function(req, res) {
+	// get collection and type 
+	var collection = req.params.collection;
+	var branch = req.params.branch;
+
+	console.log(collection, branch);
+
+	// get records branch n such
+
+	
+
+	Parties.find({}, function(err, doc) {
+	    if (err) {
+	      console.log(err);
+	    }
+	    else {
+	    	res.send(doc);
+	    }
+	});
+});
 
 
 module.exports = router;
