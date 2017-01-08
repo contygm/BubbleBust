@@ -52,18 +52,6 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-var Twitter = require("twitter");
-
-twitterKeys = {
-  consumer_key: "DET3lqXYoKyT9jAebSHQFmgJ8",
-  consumer_secret: "FtEuum2jzoXlEZQT8dNn2jJxC8jiYdC1AQm3gsxiV0GiMkMZKF",
-  access_token_key: "63023948-1em4lPI07V8hh69NTOrbT4nG9eJwjePbf2dFt13Jd",
-  access_token_secret: "ZgMuaTKCbxjVQLIewzdyPnQ4CwJBCvYhCW2t92mLBo9Vb"
-};
-
-var client = new Twitter(twitterKeys);
-
-
 // TODO: switch case when it's working
 // TODO: controller file
 // TODO: handle org types
@@ -80,23 +68,13 @@ app.get("/twitter/:collection", function(req, res) {
 	      console.log(err);
 	    }
 	    else {
-	    	for (var n = 0; n < doc.length; n++){
-	    		if (doc[n].handle != "n/a"){
-	    			var params = { screen_name: doc[n].handle };
-					console.log(doc[n].handle);
-					
-					client.get("statuses/user_timeline", params, function(error, tweets, response) {
-					    if (!error) {
-					    // use tweet variable...duh
-					      res.send(tweets);
-					    }
-					});
-	    		}			
-			}
+	    	res.send(doc);
 	    }
-	})
-
+	});
 });
+
+var routes = require("./controllers/Routes.js");
+app.use("/", routes);
 
 // -------------------------------------------------
 

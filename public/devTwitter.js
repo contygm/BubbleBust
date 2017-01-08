@@ -28,3 +28,18 @@ var getMyTweets = function() {
 };
 
 getMyTweets();
+
+
+// for (var n = 0; n < doc.length; n++){
+//           if (doc[n].handle != "n/a"){
+//             var params = { screen_name: doc[n].handle };
+//           console.log(doc[n].handle);
+          
+//           client.get("statuses/user_timeline", params, function(error, tweets, response) {
+//               if (!error) {
+//               // use tweet variable...duh
+//                 res.send(tweets);
+//               }
+//           });
+//           }     
+//       }
