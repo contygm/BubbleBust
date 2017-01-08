@@ -16,7 +16,7 @@ router.get("/", function (req, res) {
 });
 
 
-// TODO: switch case when it's working
+// TODO: switch case
 // TODO: handle org types
 // GET twitter
 
@@ -30,16 +30,50 @@ router.get("/twitter/:collection/:branch", function(req, res) {
 
 	// get records branch n such
 
-	
-
-	Parties.find({}, function(err, doc) {
-	    if (err) {
-	      console.log(err);
-	    }
-	    else {
-	    	res.send(doc);
-	    }
-	});
+	switch(collection){
+		case "Organization":
+			Organization.find({branch: {$eq: branch}}, function(err, doc) {
+			    if (err) {
+			      console.log(err);
+			    }
+			    else {
+			    	res.send(doc);
+			    }
+			});
+			break;
+		case "Executive":
+			Executive.find({branch: {$eq: branch}}, function(err, doc) {
+			    if (err) {
+			      console.log(err);
+			    }
+			    else {
+			    	res.send(doc);
+			    }
+			});
+			break;
+		case "Legislative":
+			Legislative.find({branch: {$eq: branch}}, function(err, doc) {
+			    if (err) {
+			      console.log(err);
+			    }
+			    else {
+			    	res.send(doc);
+			    }
+			});
+			break;
+		case "Parties":
+			Parties.find({branch: {$eq: branch}}, function(err, doc) {
+			    if (err) {
+			      console.log(err);
+			    }
+			    else {
+			    	res.send(doc);
+			    }
+			});
+			break;
+		default:
+			console.log("Nope, no mongo data for you.")
+	}
 });
 
 
