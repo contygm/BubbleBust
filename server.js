@@ -72,6 +72,64 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
+// A GET request to scrape the echojs website
+app.get("/scrape", function(req, res) {
+	var agency = '';
+	var entry = [];
+  // First, we grab the body of the html with request
+  request("https://www.npr.org/sections/politics/", function(error, response, html) {
+    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    var $ = cheerio.load(html);
+    // Now, we grab every h4 within an article tag, and do the following:
+    //NPR
+    $("h2.title").each(function(i, element) {
+      // Save an empty result object
+      var result = {};
+      // Save the text of the h4-tag as "title"
+      //NPR setup
+      result.title = $(this).text();
+      result.link = $(this).children("a").attr("href");
+      // Using our Article model, create a new entry
+      // This effectively passes the result object to the entry (and the title and link)
+      //entry = new Article(result);
+      entry.push(entry, result);
+      // // Now, save that entry to the db
+      // entry.save(function(err, doc) {
+      //   // Log any errors
+      //   if (err) {
+      //     console.log(err);
+      //   }
+      //   // Or log the doc
+      //   else {
+      //     console.log(doc);
+      //   }
+      // });
+	  //console.log(entry);
+	  
+    });
+    console.log(entry);
+    res.send(entry); 
+  })
+	 
+});
+var SavedArticle = require('./models/Article');
+app.post('/save', function(req, res){
+	console.log(req);
+	var savedArticle = new SavedArticle({
+		title: req.body.title,
+		pubDdate: req.body.pubDate,
+		link: req.body.link
+	})
+	//saved data
+	savedArticle.save(function(err){
+		if(err) {
+			res.json({status: 'err'})
+		} else {
+			res.json({status: 'saved'})
+		}
+	})
+})
+
 // -------------------------------------------------
 // mongoose logic goes here
 //require("./controllers/api-routes.js")(app);
