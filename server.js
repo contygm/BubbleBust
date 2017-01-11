@@ -74,10 +74,9 @@ app.get("/", function(req, res) {
 
 // A GET request to scrape the echojs website
 app.get('/scrapeNPR', function(req, res) {
-	var URL = 'https://www.npr.org/sections/politics/';
 	var entry = [];
   // First, we grab the body of the html with request
-  request("URL", function(error, response, html) {
+  request("https://www.npr.org/sections/politics/", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     // Now, we grab every h4 within an article tag, and do the following:
@@ -115,10 +114,9 @@ app.get('/scrapeNPR', function(req, res) {
 
 // A GET request to scrape the echojs website
 app.get('/scrapeFOX', function(req, res) {
-  var URL = 'http://www.foxnews.com/politics.html/';
   var entry = [];
   // First, we grab the body of the html with request
-  request("URL", function(error, response, html) {
+  request("http://www.foxnews.com/politics.html/", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     // Now, we grab every h4 within an article tag, and do the following:
