@@ -73,11 +73,11 @@ app.get("/", function(req, res) {
 });
 
 // A GET request to scrape the echojs website
-app.get("/scrape", function(req, res) {
-	var agency = '';
+app.get('/scrapeNPR', function(req, res) {
+	var URL = 'https://www.npr.org/sections/politics/';
 	var entry = [];
   // First, we grab the body of the html with request
-  request("https://www.npr.org/sections/politics/", function(error, response, html) {
+  request("URL", function(error, response, html) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(html);
     // Now, we grab every h4 within an article tag, and do the following:
@@ -92,7 +92,7 @@ app.get("/scrape", function(req, res) {
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
       //entry = new Article(result);
-      entry.push(entry, result);
+      entry.push(result);
       // // Now, save that entry to the db
       // entry.save(function(err, doc) {
       //   // Log any errors
@@ -107,11 +107,38 @@ app.get("/scrape", function(req, res) {
 	  //console.log(entry);
 	  
     });
-    console.log(entry);
+    //console.log(entry);
     res.send(entry); 
   })
 	 
 });
+
+// A GET request to scrape the echojs website
+app.get('/scrapeFOX', function(req, res) {
+  var URL = 'http://www.foxnews.com/politics.html/';
+  var entry = [];
+  // First, we grab the body of the html with request
+  request("URL", function(error, response, html) {
+    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    var $ = cheerio.load(html);
+    // Now, we grab every h4 within an article tag, and do the following:
+    //FOX News
+    $("li.article-ct").each(function(i, element) {
+      // Save an empty result object
+      var result = {};
+
+      //FOX News setup
+      result.title = $(this).find("h3").text();
+      result.link = "http://www.foxnews.com" + $(this).find("a").attr("href");
+
+      entry.push(result);
+    });
+    //console.log(entry);
+    res.send(entry); 
+  })
+   
+});
+
 var SavedArticle = require('./models/Article');
 app.post('/save', function(req, res){
 	console.log(req);

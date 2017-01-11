@@ -1,9 +1,9 @@
 // SETUP VARIABLES
 // ==========================================================
 var allNews = [{ }];
-var scrapedNews = [];
 var numResults 	= 0;
 var queryURL;
+var route;
 // var queryURLBase = ['https://newsapi.org/v1/articles?source=the-guardian-uk&sortBy=latest&apiKey=27b0fae587184d978804a9fe7727d8b4',
 // 					'https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=27b0fae587184d978804a9fe7727d8b4',
 // 					'https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=27b0fae587184d978804a9fe7727d8b4',
@@ -15,13 +15,14 @@ var articleCounter = 0;
 function displayArticles() {
 			// Initially sets the articleCounter to 0
 		articleCounter = 0;
-
+		//limit number of articles to 5
+		numResults = 5;
 		// Empties the region associated with the articles
 		$("#wellSection").empty();
 
 		//console.log(allNews);
 		//console.log(allNews.length);
-		for (var j=1; j<numResults; j++) {
+		for (var j=1; j<=numResults; j++) {
 
 			// Add to the Article Counter (to make sure we show the right number)
 			articleCounter++;
@@ -46,16 +47,17 @@ function displayArticles() {
 		}	
 }
 
-function displayScrapedArticles() {
+function displayScrapedArticles(scrapedNews) {
 			// Initially sets the articleCounter to 0
 		articleCounter = 0;
-
+		//limit number of articles to 5
+		numResults = 5;
 		// Empties the region associated with the articles
 		$("#wellSection").empty();
 
 		console.log(scrapedNews);
 		console.log(scrapedNews.length);
-		for (var j=1; j<numResults - 1; j++) {
+		for (var j=0; j<numResults; j++) {
 
 			// Add to the Article Counter (to make sure we show the right number)
 			articleCounter++;
@@ -94,13 +96,14 @@ function runQuery(numArticles, queryURL){
 	
 			allNews.push.apply(allNews, gardianNews.articles);		
 		}
+		console.log(allNews);
 		displayArticles();
 	});
 
 }
 
 // When user click's update button, update the specific note
-$(document).on("click", "#saveArticle-" + articleCounter + '"', function() {
+$(document).on("click", "#saveArticle-" + articleCounter , function() {
   $.ajax({
     type: "POST",
     url: "/save",
@@ -118,60 +121,63 @@ $(document).on("click", "#saveArticle-" + articleCounter + '"', function() {
   });
 });
 
+
+function ajaxCall(route) {
+	numResults = 0;
+	var scrapedNews = [];
+	console.log(route);
+
+	$.ajax({ type: "GET", 
+		  	url: route, 
+		    // On successful call
+		    success: function(response) {
+		    	//console.log(response);
+				numResults = numResults + response.length;
+				//console.log(numResults);
+				scrapedNews.push(response);	
+
+		    }
+
+	})
+		.done(function(scrapedNews) {
+			displayScrapedArticles(scrapedNews);
+		});
+}
+
 // METHODS
 // ==========================================================
 	
-// On Click button associated with the Search Button
+// On Click buttons associated with the Search Button
 $('#runGuardian').on('click', function(){
 	queryURL = 'https://newsapi.org/v1/articles?source=the-guardian-uk&sortBy=latest&apiKey=27b0fae587184d978804a9fe7727d8b4';
 	runQuery(numResults, queryURL);		
-	// This line allows us to take advantage of the HTML "submit" property. This way we can hit enter on the keyboard and it registers the search (in addition to clicks).
 	return false;
 });	
 $('#runBBC').on('click', function(){
 	queryURL = 'https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=27b0fae587184d978804a9fe7727d8b4';
 	runQuery(numResults, queryURL);		
-	// This line allows us to take advantage of the HTML "submit" property. This way we can hit enter on the keyboard and it registers the search (in addition to clicks).
 	return false;
 });
 $('#runCNN').on('click', function(){
 	queryURL = 'https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=27b0fae587184d978804a9fe7727d8b4';
 	runQuery(numResults, queryURL);		
-	// This line allows us to take advantage of the HTML "submit" property. This way we can hit enter on the keyboard and it registers the search (in addition to clicks).
 	return false;
 });
 $('#runEconomist').on('click', function(){
 	queryURL = 'https://newsapi.org/v1/articles?source=the-economist&sortBy=latest&apiKey=27b0fae587184d978804a9fe7727d8b4';
 	runQuery(numResults, queryURL);		
-	// This line allows us to take advantage of the HTML "submit" property. This way we can hit enter on the keyboard and it registers the search (in addition to clicks).
 	return false;
 });
 
 //scraping part
 $("#runNPR").on("click", function() {
-	numResults = 0;
-	scrapedNews = [];
+	route = "/scrapeNPR";
+	ajaxCall(route);
+});
 
-  $.ajax({ type: "GET", 
-		  	url: "/scrape", 
-		    // On successful call
-		    success: function(response) {
-		    	console.log(response.title);
-			  	console.log(response.link);
-
-			  	numResults = numResults + Object.keys(response).length;
-			  	console.log(numResults);
-
-			  	scrapedNews.push(scrapedNews, response);
-
-		    }
-
-	})
-  .done(function(scrapedNews) {		
-
-		displayScrapedArticles();
-  })
-
+$("#runFOX").on("click", function() {
+	route = "/scrapeFOX";
+	ajaxCall(route);
 });
 
 
