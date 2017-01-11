@@ -180,6 +180,15 @@ $("#runFOX").on("click", function() {
 	ajaxCall(route);
 });
 
+$("#runHill").on("click", function() {
+	route = "/scrapeHill";
+	ajaxCall(route);
+});
+
+$("#runBlaze").on("click", function() {
+	route = "/scrapeBlaze";
+	ajaxCall(route);
+});
 
 // This button clears the top articles section
 $('#clearAll').on('click', function(){

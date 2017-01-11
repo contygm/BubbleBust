@@ -112,7 +112,7 @@ app.get('/scrapeNPR', function(req, res) {
 	 
 });
 
-// A GET request to scrape the echojs website
+// A GET request to scrape the FOX News website
 app.get('/scrapeFOX', function(req, res) {
   var entry = [];
   // First, we grab the body of the html with request
@@ -128,6 +128,56 @@ app.get('/scrapeFOX', function(req, res) {
       //FOX News setup
       result.title = $(this).find("h3").text();
       result.link = "http://www.foxnews.com" + $(this).find("a").attr("href");
+
+      entry.push(result);
+    });
+    //console.log(entry);
+    res.send(entry); 
+  })
+   
+});
+
+// A GET request to scrape the The Hill website
+app.get('/scrapeHill', function(req, res) {
+  var entry = [];
+  // First, we grab the body of the html with request
+  request("http://thehill.com/", function(error, response, html) {
+    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    var $ = cheerio.load(html);
+    // Now, we grab every h4 within an article tag, and do the following:
+    //The Hill
+    $("li.views-row").each(function(i, element) {
+      // Save an empty result object
+      var result = {};
+
+      //The Hill setup
+      result.title = $(this).find("a").text();
+      result.link = "http://thehill.com" + $(this).find("a").attr("href"); 
+
+      entry.push(result);
+    });
+    //console.log(entry);
+    res.send(entry); 
+  })
+   
+});
+
+// A GET request to scrape the The Blaze website
+app.get('/scrapeBlaze', function(req, res) {
+  var entry = [];
+  // First, we grab the body of the html with request
+  request("http://www.theblaze.com/", function(error, response, html) {
+    // Then, we load that into cheerio and save it to $ for a shorthand selector
+    var $ = cheerio.load(html);
+    // Now, we grab every h4 within an article tag, and do the following:
+    //FOX News
+    $("article.feed.article").each(function(i, element) {
+      // Save an empty result object
+      var result = {};
+
+      //The Blaze setup
+      result.title = $(this).find("h3").text();
+      result.link = "http://www.theblaze.com" + $(this).find("a").attr("href"); 
 
       entry.push(result);
     });
