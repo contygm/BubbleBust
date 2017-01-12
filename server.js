@@ -72,119 +72,111 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-// A GET request to scrape the echojs website
+// A GET request to scrape the News websites
 app.get('/scrapeNPR', function(req, res) {
-	var entry = [];
-  // First, we grab the body of the html with request
-  request("https://www.npr.org/sections/politics/", function(error, response, html) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
-    var $ = cheerio.load(html);
-    // Now, we grab every h4 within an article tag, and do the following:
-    //NPR
-    $("h2.title").each(function(i, element) {
-      // Save an empty result object
-      var result = {};
-      // Save the text of the h4-tag as "title"
-      //NPR setup
-      result.title = $(this).text();
-      result.link = $(this).children("a").attr("href");
-      // Using our Article model, create a new entry
-      // This effectively passes the result object to the entry (and the title and link)
-      //entry = new Article(result);
-      entry.push(result);
-      // // Now, save that entry to the db
-      // entry.save(function(err, doc) {
-      //   // Log any errors
-      //   if (err) {
-      //     console.log(err);
-      //   }
-      //   // Or log the doc
-      //   else {
-      //     console.log(doc);
-      //   }
-      // });
-	  //console.log(entry);
-	  
-    });
-    //console.log(entry);
-    res.send(entry); 
-  })
-	 
+  var entry = [];
+  //var agency = req.params.agency;
+  //console.log(agency);
+          request("https://www.npr.org/sections/politics/", function(error, response, html) {
+            // Then, we load that into cheerio and save it to $ for a shorthand selector
+            var $ = cheerio.load(html);
+            // Now, we grab every h4 within an article tag, and do the following:
+            //NPR
+            $("h2.title").each(function(i, element) {
+              // Save an empty result object
+              var result = {};
+              // Save the text of the h4-tag as "title"
+              //NPR setup
+              result.title = $(this).text();
+              result.link = $(this).children("a").attr("href");
+              result.pubDate = $(this).find("p").find("span.date").text();
+              // Using our Article model, create a new entry
+              // This effectively passes the result object to the entry (and the title and link)
+              //entry = new Article(result);
+              entry.push(result);
+              // // Now, save that entry to the db
+              // entry.save(function(err, doc) {
+              //   // Log any errors
+              //   if (err) {
+              //     console.log(err);
+              //   }
+              //   // Or log the doc
+              //   else {
+              //     console.log(doc);
+              //   }
+              // });
+            //console.log(entry);
+            
+            });
+            //console.log(entry);
+            res.send(entry); 
+          });
 });
 
-// A GET request to scrape the FOX News website
 app.get('/scrapeFOX', function(req, res) {
   var entry = [];
-  // First, we grab the body of the html with request
-  request("http://www.foxnews.com/politics.html/", function(error, response, html) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
-    var $ = cheerio.load(html);
-    // Now, we grab every h4 within an article tag, and do the following:
-    //FOX News
-    $("li.article-ct").each(function(i, element) {
-      // Save an empty result object
-      var result = {};
+          request("http://www.foxnews.com/politics.html/", function(error, response, html) {
+            // Then, we load that into cheerio and save it to $ for a shorthand selector
+            var $ = cheerio.load(html);
+            // Now, we grab every h4 within an article tag, and do the following:
+            //FOX News
+            $("li.article-ct").each(function(i, element) {
+              // Save an empty result object
+              var result = {};
 
-      //FOX News setup
-      result.title = $(this).find("h3").text();
-      result.link = "http://www.foxnews.com" + $(this).find("a").attr("href");
-
-      entry.push(result);
-    });
-    //console.log(entry);
-    res.send(entry); 
-  })
-   
+              //FOX News setup
+              result.title = $(this).find("h3").text();
+              result.link = "http://www.foxnews.com" + $(this).find("a").attr("href");
+              result.pubDate = $(this).find("span.date").text();
+              entry.push(result);
+            });
+            //console.log(entry);
+            res.send(entry); 
+          });
 });
 
-// A GET request to scrape the The Hill website
 app.get('/scrapeHill', function(req, res) {
   var entry = [];
-  // First, we grab the body of the html with request
-  request("http://thehill.com/", function(error, response, html) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
-    var $ = cheerio.load(html);
-    // Now, we grab every h4 within an article tag, and do the following:
-    //The Hill
-    $("li.views-row").each(function(i, element) {
-      // Save an empty result object
-      var result = {};
+          request("http://thehill.com/", function(error, response, html) {
+            // Then, we load that into cheerio and save it to $ for a shorthand selector
+            var $ = cheerio.load(html);
+            // Now, we grab every h4 within an article tag, and do the following:
+            //The Hill
+            $("li.views-row").each(function(i, element) {
+              // Save an empty result object
+              var result = {};
 
-      //The Hill setup
-      result.title = $(this).find("a").text();
-      result.link = "http://thehill.com" + $(this).find("a").attr("href"); 
-
-      entry.push(result);
-    });
-    //console.log(entry);
-    res.send(entry); 
-  })
-   
+              //The Hill setup
+              result.title = $(this).find("a").text();
+              result.link = "http://thehill.com" + $(this).find("a").attr("href"); 
+              result.pubDate = $(this).find("span.date").text();
+              entry.push(result);
+            });
+            //console.log(entry);
+            res.send(entry); 
+          })
 });
 
-// A GET request to scrape the The Blaze website
 app.get('/scrapeBlaze', function(req, res) {
   var entry = [];
-  // First, we grab the body of the html with request
-  request("http://www.theblaze.com/", function(error, response, html) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
-    var $ = cheerio.load(html);
-    // Now, we grab every h4 within an article tag, and do the following:
-    //FOX News
-    $("article.feed.article").each(function(i, element) {
-      // Save an empty result object
-      var result = {};
+          request("http://www.theblaze.com/", function(error, response, html) {
+            // Then, we load that into cheerio and save it to $ for a shorthand selector
+            var $ = cheerio.load(html);
+            // Now, we grab every h4 within an article tag, and do the following:
+            //FOX News
+            $("article.feed.article").each(function(i, element) {
+              // Save an empty result object
+              var result = {};
 
-      //The Blaze setup
-      result.title = $(this).find("h3").text();
-      result.link = "http://www.theblaze.com" + $(this).find("a").attr("href"); 
-
-      entry.push(result);
-    });
-    //console.log(entry);
-    res.send(entry); 
-  })
-   
+              //The Blaze setup
+              result.title = $(this).find("h3").text();
+              result.link = "http://www.theblaze.com" + $(this).find("a").attr("href"); 
+              result.pubDate = $(this).find("span.date").text();
+              entry.push(result);
+            });
+            //console.log(entry);
+            res.send(entry); 
+          })
 });
 
 var SavedArticle = require('./models/Article');
@@ -192,9 +184,10 @@ app.post('/save', function(req, res){
 	console.log(req);
 	var savedArticle = new SavedArticle({
 		title: req.body.title,
-		pubDdate: req.body.pubDate,
+		pubDate: req.body.pubDate,
 		link: req.body.link
 	})
+
 	//saved data
 	savedArticle.save(function(err){
 		if(err) {
@@ -213,3 +206,110 @@ app.post('/save', function(req, res){
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
 });
+
+
+// // A GET request to scrape the News websites
+// app.get('/scrape/agency', function(req, res) {
+//   var entry = [];
+//   var agency = req.params.agency;
+//   console.log(agency);
+
+//   // First, we grab the body of the html with request
+//   switch(agency) {
+//     case "/scrape/NPR": 
+//           request("https://www.npr.org/sections/politics/", function(error, response, html) {
+//             // Then, we load that into cheerio and save it to $ for a shorthand selector
+//             var $ = cheerio.load(html);
+//             // Now, we grab every h4 within an article tag, and do the following:
+//             //NPR
+//             $("h2.title").each(function(i, element) {
+//               // Save an empty result object
+//               var result = {};
+//               // Save the text of the h4-tag as "title"
+//               //NPR setup
+//               result.title = $(this).text();
+//               result.link = $(this).children("a").attr("href");
+//               // Using our Article model, create a new entry
+//               // This effectively passes the result object to the entry (and the title and link)
+//               //entry = new Article(result);
+//               entry.push(result);
+//               // // Now, save that entry to the db
+//               // entry.save(function(err, doc) {
+//               //   // Log any errors
+//               //   if (err) {
+//               //     console.log(err);
+//               //   }
+//               //   // Or log the doc
+//               //   else {
+//               //     console.log(doc);
+//               //   }
+//               // });
+//             //console.log(entry);
+            
+//             });
+//             //console.log(entry);
+//             res.send(entry); 
+//           });
+//           break;  
+//     case "/scrape/FOX":
+//           request("http://www.foxnews.com/politics.html/", function(error, response, html) {
+//             // Then, we load that into cheerio and save it to $ for a shorthand selector
+//             var $ = cheerio.load(html);
+//             // Now, we grab every h4 within an article tag, and do the following:
+//             //FOX News
+//             $("li.article-ct").each(function(i, element) {
+//               // Save an empty result object
+//               var result = {};
+
+//               //FOX News setup
+//               result.title = $(this).find("h3").text();
+//               result.link = "http://www.foxnews.com" + $(this).find("a").attr("href");
+
+//               entry.push(result);
+//             });
+//             //console.log(entry);
+//             res.send(entry); 
+//           });
+//          break;
+//     case "/scrape/Hill":
+//           request("http://thehill.com/", function(error, response, html) {
+//             // Then, we load that into cheerio and save it to $ for a shorthand selector
+//             var $ = cheerio.load(html);
+//             // Now, we grab every h4 within an article tag, and do the following:
+//             //The Hill
+//             $("li.views-row").each(function(i, element) {
+//               // Save an empty result object
+//               var result = {};
+
+//               //The Hill setup
+//               result.title = $(this).find("a").text();
+//               result.link = "http://thehill.com" + $(this).find("a").attr("href"); 
+
+//               entry.push(result);
+//             });
+//             //console.log(entry);
+//             res.send(entry); 
+//           })
+//         break;
+//     case "/scrape/Blaze":
+//           request("http://www.theblaze.com/", function(error, response, html) {
+//             // Then, we load that into cheerio and save it to $ for a shorthand selector
+//             var $ = cheerio.load(html);
+//             // Now, we grab every h4 within an article tag, and do the following:
+//             //FOX News
+//             $("article.feed.article").each(function(i, element) {
+//               // Save an empty result object
+//               var result = {};
+
+//               //The Blaze setup
+//               result.title = $(this).find("h3").text();
+//               result.link = "http://www.theblaze.com" + $(this).find("a").attr("href"); 
+
+//               entry.push(result);
+//             });
+//             //console.log(entry);
+//             res.send(entry); 
+//           })
+//         break;
+//     }
+// });

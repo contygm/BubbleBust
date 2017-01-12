@@ -28,21 +28,26 @@ function displayArticles() {
 			articleCounter++;
 
 			// Create the HTML Well (Section) and Add the Article content for each
-			var wellSection = $("<div>");
+			var wellSection = $("<li>");
 			wellSection.addClass('well');
+			wellSection.addClass('list-group-item');
 			wellSection.attr('id', 'articleWell-' + articleCounter)
 			$('#wellSection').append(wellSection);
 
-
-			// Then display the remaining fields in the HTML (Title, Date, URL)
-			$("#articleWell-"+ articleCounter).append("<h4 id='artTitle'><a href=" + allNews[j].url + " target='_blank'>" + allNews[j].title + "</a></h4>");
-			$("#articleWell-"+ articleCounter).append('<button class="btn btn-primary pull-right" id="saveArticle-' + articleCounter + '">Save</button>');
-			
+			$("#articleWell-"+ articleCounter).append('<h3 id="artTitle"><em>' + allNews[j].title + '</em><div class="btn-group pull-right"><button class="btn btn-primary" id="btnSave">Save</button><a id="artLink" class="btn btn-default" href="' 
+														+ allNews[j].url + '" target="_blank">View Article</a></div></h3>');
 			if (allNews[j].publishedAt != null){
-				$("#articleWell-"+ articleCounter).append('<h5 id="artDate">' + allNews[j].publishedAt + "</h5>");
+				$("#articleWell-"+ articleCounter).append('<p id="artDate">Date Published: ' + allNews[j].publishedAt + '</p></li>');
 			}
+			// Then display the remaining fields in the HTML (Title, Date, URL)
+			// $("#articleWell-"+ articleCounter).append("<h4 id='artTitle'><a href=" + allNews[j].url + " target='_blank'>" + allNews[j].title + "</a></h4>");
+			// $("#articleWell-"+ articleCounter).append('<button class="btn btn-primary pull-right" id="saveArticle-' + articleCounter + '">Save</button>');
 			
-			$("#articleWell-"+ articleCounter).append("<div id='artLink'><a href='" + allNews[j].url + "' target='_blank'>" + allNews[j].url + "</a></div>");	
+			// if (allNews[j].publishedAt != null){
+			// 	$("#articleWell-"+ articleCounter).append('<h5 id="artDate">' + allNews[j].publishedAt + "</h5>");
+			// }
+			
+			// $("#articleWell-"+ articleCounter).append("<div id='artLink'><a href='" + allNews[j].url + "' target='_blank'>" + allNews[j].url + "</a></div>");	
 
 		}	
 }
@@ -63,21 +68,17 @@ function displayScrapedArticles(scrapedNews) {
 			articleCounter++;
 
 			// Create the HTML Well (Section) and Add the Article content for each
-			var wellSection = $("<div>");
+			var wellSection = $("<li>");
 			wellSection.addClass('well');
+			wellSection.addClass('list-group-item');
 			wellSection.attr('id', 'articleWell-' + articleCounter)
 			$('#wellSection').append(wellSection);
 
-
-			// Then display the remaining fields in the HTML (Title, Date, URL)
-			$("#articleWell-"+ articleCounter).append("<h4 id='artTitle'><a href=" + scrapedNews[j].link + " target='_blank'>" + scrapedNews[j].title + "</a></h4>");
-
-			// if (scrapedNews[j].publishedAt != null){
-			// 	$("#articleWell-"+ articleCounter).append('<h5>' + scrapedNews[j].publishedAt + "</h5>");
-			// }
-			
-			$("#articleWell-"+ articleCounter).append("<a href='" + scrapedNews[j].link + "' target='_blank'>" + scrapedNews[j].link + "</a>");	
-
+			$("#articleWell-"+ articleCounter).append('<h3><em>' + scrapedNews[j].title + '</em><div class="btn-group pull-right"><button class="btn btn-primary" id="btnSave">Save</button><a id="artLink" class="btn btn-default" href="' 
+														+ scrapedNews[j].link + '" target="_blank">View Article</a></div></h3>');
+			if (scrapedNews[j].pubDate !== '') {
+				$("#articleWell-"+ articleCounter).append('<p id="artDate">Date Published: ' + scrapedNews[j].pubDate + '</p></li>');			
+			}
 		}	
 }
 // This runQuery function expects two parameters (the number of articles to show and the final URL to download data from)
@@ -103,14 +104,14 @@ function runQuery(numArticles, queryURL){
 }
 
 // When user click's update button, update the specific note
-$(document).on("click", "#saveArticle-" + articleCounter , function() {
+$(document).on("click", "#btnSave", function() {
   $.ajax({
     type: "POST",
     url: "/save",
     dataType: "json",
     data: {
-      title: $("#artTitle").val(),
-      link: $("#artLink").val(),
+      title: $("#artTitle").val().trim(),
+      link: $("#artLink").val().trim(),
       pubDate: $("#artDate").val()
     },
     // On successful call
