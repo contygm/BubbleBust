@@ -80,14 +80,14 @@ app.get('/scrapeNPR', function(req, res) {
     var $ = cheerio.load(html);
     // Now, we grab every h4 within an article tag, and do the following:
     //NPR
-    $("h2.title").each(function(i, element) {
+    $(".item-info").each(function(i, element) {
       // Save an empty result object
       var result = {};
       // Save the text of the h4-tag as "title"
       //NPR setup
-      result.title = $(this).text();
-      result.link = $(this).children("a").attr("href");
-      result.pubDate = $(this).find("p").find("span.date").text();
+      result.title = $(this).find("h2.title").text();
+      result.link = $(this).find("a").attr("href");
+      result.pubDate = $(this).find("span").text();
       // Using our Article model, create a new entry
       // This effectively passes the result object to the entry (and the title and link)
       //entry = new Article(result);
@@ -124,7 +124,10 @@ app.get('/scrapeFOX', function(req, res) {
       //FOX News setup
       result.title = $(this).find("h3").text();
       result.link = "http://www.foxnews.com" + $(this).find("a").attr("href");
-      result.pubDate = $(this).find("span.date").text();
+
+      //need to strip date from the link!!! work in progress
+      result.pubDate = $(this).find("a").attr("href");
+      
       entry.push(result);
     });
     //console.log(entry);
@@ -145,7 +148,7 @@ app.get('/scrapeHill', function(req, res) {
       //The Hill setup
       result.title = $(this).find("a").text();
       result.link = "http://thehill.com" + $(this).find("a").attr("href"); 
-      result.pubDate = $(this).find("span.date").text();
+      result.pubDate = $(this).find("em").text() + " ago";
       entry.push(result);
     });
     //console.log(entry);
@@ -166,7 +169,7 @@ app.get('/scrapeBlaze', function(req, res) {
       //The Blaze setup
       result.title = $(this).find("h3").text();
       result.link = "http://www.theblaze.com" + $(this).find("a").attr("href"); 
-      result.pubDate = $(this).find("span.date").text();
+      result.pubDate = $(this).find("time").text();
       entry.push(result);
     });
     //console.log(entry);
