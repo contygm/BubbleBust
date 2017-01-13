@@ -15,8 +15,6 @@ router.get("/", function (req, res) {
 	res.sendFile(__dirname + "/public/index.html");
 });
 
-
-// TODO: switch case
 // TODO: handle org types
 // GET twitter
 
@@ -37,7 +35,10 @@ router.get("/twitter/:collection/:branch", function(req, res) {
 			      console.log(err);
 			    }
 			    else {
-			    	res.send(doc);
+			    	var data = doc;
+			    	res.sendFile("/public/index.html", function(){
+			    		$("#app").append(data);
+			    	});
 			    }
 			});
 			break;
