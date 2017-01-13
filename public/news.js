@@ -24,7 +24,7 @@ function saveArticle() {
 
 	  $.ajax({
 	    type: "POST",
-	    url: "/save",
+	    url: "/api/saved",
 	    dataType: "json",
 	    data: {
 	      title: title,
@@ -67,7 +67,7 @@ function displayArticles() {
 												+ articleCounter + '>Save</button><a id="artLink" class="btn btn-default" href="' 
 												+ allNews[j].url + '" target="_blank">View Article</a></div></h3>');
 			if (allNews[j].publishedAt != null){
-				$("#articleWell-"+ articleCounter).append('<p id="artDate">Date Published: ' + allNews[j].publishedAt + '</p></li>');
+				$("#articleWell-"+ articleCounter).append('<p id="artDate">Date Published:  ' + allNews[j].publishedAt + '</p></li>');
 			}	
 			else {
 				$("#articleWell-"+ articleCounter).append('<p id="artDate"> </p></li>');
@@ -103,7 +103,10 @@ function displayScrapedArticles(scrapedNews) {
 												+ articleCounter + '>Save</button><a id="artLink" class="btn btn-default" href="' 
 												+ scrapedNews[j].link + '" target="_blank">View Article</a></div></h3>');
 			if (scrapedNews[j].pubDate !== '') {
-				$("#articleWell-"+ articleCounter).append('<p id="artDate">Date Published: ' + scrapedNews[j].pubDate + '</p></li>');			
+				//here add logic to strip date out of the data for FOX News only!
+				//work in progress
+
+				$("#articleWell-"+ articleCounter).append('<p id="artDate">Date Published:  ' + scrapedNews[j].pubDate + '</p></li>');			
 			}
 			else {
 				$("#articleWell-"+ articleCounter).append('<p id="artDate"> </p></li>');
