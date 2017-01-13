@@ -4,14 +4,42 @@ var allNews = [{ }];
 var numResults 	= 0;
 var queryURL;
 var route;
-// var queryURLBase = ['https://newsapi.org/v1/articles?source=the-guardian-uk&sortBy=latest&apiKey=27b0fae587184d978804a9fe7727d8b4',
-// 					'https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=27b0fae587184d978804a9fe7727d8b4',
-// 					'https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=27b0fae587184d978804a9fe7727d8b4',
-// 					'https://newsapi.org/v1/articles?source=the-economist&sortBy=latest&apiKey=27b0fae587184d978804a9fe7727d8b4'];
 var articleCounter = 0;
 
 // FUNCTIONS
 // ==========================================================
+function saveArticle() {
+	// When user click's save button, article will be saved to DB
+	$(".btnSave").click(function(event) {
+		var articleNumber = event.target.attributes[1].value;
+		//console.log(event);
+
+		console.log($("#articleWell-"+ articleNumber)[0].children[0].children[0].innerText);
+		console.log($("#articleWell-"+ articleNumber)[0].children[0].children[1].children[1].href);
+		console.log($("#articleWell-"+ articleNumber)[0].children[1].innerText);
+
+		var title = $("#articleWell-"+ articleNumber)[0].children[0].children[0].innerText;
+		var link = $("#articleWell-"+ articleNumber)[0].children[0].children[1].children[1].href;
+		var pubDate = $("#articleWell-"+ articleNumber)[0].children[1].innerText;
+
+	  $.ajax({
+	    type: "POST",
+	    url: "/save",
+	    dataType: "json",
+	    data: {
+	      title: title,
+	      link: link,
+	      pubDate: pubDate
+	    },
+	    // On successful call
+	    success: function(data) {
+	      // Grab the results from the db again, to populate the DOM
+	      //getResults();
+	    }
+	  });
+	});	
+}
+
 function displayArticles() {
 			// Initially sets the articleCounter to 0
 		articleCounter = 0;
@@ -34,20 +62,16 @@ function displayArticles() {
 			wellSection.attr('id', 'articleWell-' + articleCounter)
 			$('#wellSection').append(wellSection);
 
-			$("#articleWell-"+ articleCounter).append('<h3 id="artTitle"><em>' + allNews[j].title + '</em><div class="btn-group pull-right"><button class="btn btn-primary btnSave" data-id=' + articleCounter + '>Save</button><a id="artLink" class="btn btn-default" href="' 
-														+ allNews[j].url + '" target="_blank">View Article</a></div></h3>');
+			$("#articleWell-"+ articleCounter).append('<h3 id="artTitle"><em>' 
+												+ allNews[j].title + '</em><div class="btn-group pull-right"><button class="btn btn-primary btnSave" data-id=' 
+												+ articleCounter + '>Save</button><a id="artLink" class="btn btn-default" href="' 
+												+ allNews[j].url + '" target="_blank">View Article</a></div></h3>');
 			if (allNews[j].publishedAt != null){
 				$("#articleWell-"+ articleCounter).append('<p id="artDate">Date Published: ' + allNews[j].publishedAt + '</p></li>');
+			}	
+			else {
+				$("#articleWell-"+ articleCounter).append('<p id="artDate"> </p></li>');
 			}
-			// Then display the remaining fields in the HTML (Title, Date, URL)
-			// $("#articleWell-"+ articleCounter).append("<h4 id='artTitle'><a href=" + allNews[j].url + " target='_blank'>" + allNews[j].title + "</a></h4>");
-			// $("#articleWell-"+ articleCounter).append('<button class="btn btn-primary pull-right" id="saveArticle-' + articleCounter + '">Save</button>');
-			
-			// if (allNews[j].publishedAt != null){
-			// 	$("#articleWell-"+ articleCounter).append('<h5 id="artDate">' + allNews[j].publishedAt + "</h5>");
-			// }
-			
-			// $("#articleWell-"+ articleCounter).append("<div id='artLink'><a href='" + allNews[j].url + "' target='_blank'>" + allNews[j].url + "</a></div>");	
 
 		}	
 }
@@ -74,11 +98,16 @@ function displayScrapedArticles(scrapedNews) {
 			wellSection.attr('id', 'articleWell-' + articleCounter)
 			$('#wellSection').append(wellSection);
 
-			$("#articleWell-"+ articleCounter).append('<h3><em>' + scrapedNews[j].title + '</em><div class="btn-group pull-right"><button class="btn btn-primary btnSave" data-id=' + articleCounter + '>Save</button><a id="artLink" class="btn btn-default" href="' 
-														+ scrapedNews[j].link + '" target="_blank">View Article</a></div></h3>');
+			$("#articleWell-"+ articleCounter).append('<h3><em>' 
+												+ scrapedNews[j].title + '</em><div class="btn-group pull-right"><button class="btn btn-primary btnSave" data-id=' 
+												+ articleCounter + '>Save</button><a id="artLink" class="btn btn-default" href="' 
+												+ scrapedNews[j].link + '" target="_blank">View Article</a></div></h3>');
 			if (scrapedNews[j].pubDate !== '') {
 				$("#articleWell-"+ articleCounter).append('<p id="artDate">Date Published: ' + scrapedNews[j].pubDate + '</p></li>');			
 			}
+			else {
+				$("#articleWell-"+ articleCounter).append('<p id="artDate"> </p></li>');
+			}			
 		}	
 }
 // This runQuery function expects two parameters (the number of articles to show and the final URL to download data from)
@@ -98,46 +127,20 @@ function runQuery(numArticles, queryURL){
 			allNews.push.apply(allNews, gardianNews.articles);		
 		}
 		console.log(allNews);
+		//show articles on the page
 		displayArticles();
-			// When user click's update button, update the specific note
-			$(".btnSave").click(function(event) {
-				var articleNumber = event.target.attributes[1].value;
-				console.log(event);
 
-				console.log($("#articleWell-"+ articleNumber)[0].children[0].children[0].innerText);
-				console.log($("#articleWell-"+ articleNumber)[0].children[0].children[1].children[1].href);
-				console.log($("#articleWell-"+ articleNumber)[0].children[1].innerText);
-				//var title = $("#articleWell-"+ articleNumber)[0].attr("#artTitle").val();
-// 				var link = event.target.children[0].children[0].nextElementSibling
-// .children[1].href();
-				//var pubDate = event.target.children[0].innerText();
-			  $.ajax({
-			    type: "POST",
-			    url: "/save",
-			    dataType: "json",
-			    data: {
-			      title: $("#articleWell-"+ articleNumber)[0].children[0].children[0].innerText,
-			      link: $("#articleWell-"+ articleNumber)[0].children[0].children[1].children[1].href,
-			      pubDate: $("#articleWell-"+ articleNumber)[0].children[1].innerText
-			    },
-			    // On successful call
-			    success: function(data) {
-			      // Grab the results from the db again, to populate the DOM
-			      //getResults();
-			    }
-			  });
-			});
+		//save article to DB
+		saveArticle();
 	});
 
 }
 
-
-
-
+//ajax to scrape for articles
 function ajaxCall(route) {
 	numResults = 0;
 	var scrapedNews = [];
-	console.log(route);
+	//console.log(route);
 
 	$.ajax({ type: "GET", 
 		  	url: route, 
@@ -147,36 +150,13 @@ function ajaxCall(route) {
 				numResults = numResults + response.length;
 				//console.log(numResults);
 				scrapedNews.push(response);	
-
 		    }
-
 	})
 		.done(function(scrapedNews) {
+			//show scraped articles on the page
 			displayScrapedArticles(scrapedNews);
-			// When user click's update button, update the specific note
-			$(".btnSave").click(function(event) {
-				var articleNumber = event.target.attributes[1].value;
-				console.log($("#articleWell-"+ articleNumber)[0]);
-				var title = event.target.children[0].innerText();
-				var link = event.target.children[0].children[0].nextElementSibling
-.children[1].href();
-				var pubDate = event.target.children[0].innerText();
-			  $.ajax({
-			    type: "POST",
-			    url: "/save",
-			    dataType: "json",
-			    data: {
-			      title: $("#articleWell-"+ articleNumber).val().trim(),
-			      link: $("#artLink").val().trim(),
-			      pubDate: $("#artDate").val()
-			    },
-			    // On successful call
-			    success: function(data) {
-			      // Grab the results from the db again, to populate the DOM
-			      //getResults();
-			    }
-			  });
-			});
+			//save article to DB
+			saveArticle();
 		});
 }
 
@@ -212,7 +192,7 @@ $("#runNPR").on("click", function() {
 });
 
 $("#runFOX").on("click", function() {
-	route = "FOX";
+	route = "/scrapeFOX";
 	ajaxCall(route);
 });
 
