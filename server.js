@@ -73,7 +73,7 @@ app.get("/", function(req, res) {
 });
 
 // A GET request to scrape the News websites
-app.get('/scrapeNPR', function(req, res) {
+app.get('/scrape/:agency', function(req, res) {
   var entry = [];
   //var agency = req.params.agency;
   //console.log(agency);
@@ -192,8 +192,10 @@ app.post('/save', function(req, res){
 	savedArticle.save(function(err){
 		if(err) {
 			res.json({status: 'err'})
+      console.log(err);
 		} else {
 			res.json({status: 'saved'})
+      console.log("saved");
 		}
 	})
 })
@@ -216,7 +218,7 @@ app.listen(PORT, function() {
 
 //   // First, we grab the body of the html with request
 //   switch(agency) {
-//     case "/scrape/NPR": 
+//     case "NPR": 
 //           request("https://www.npr.org/sections/politics/", function(error, response, html) {
 //             // Then, we load that into cheerio and save it to $ for a shorthand selector
 //             var $ = cheerio.load(html);

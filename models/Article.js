@@ -17,7 +17,7 @@ var ArticleSchema = new Schema({
   },
     // date of the publication not required
   pubDate: {
-    type: Date,
+    type: String,
     required: false
   },
   // image is not required
