@@ -1,6 +1,7 @@
 // Our scraping tools
 var request = require("request");
 var cheerio = require("cheerio");
+var currentdate = new Date();
 
 module.exports = function(app) {
 	// A GET request to scrape the News websites
@@ -51,7 +52,7 @@ module.exports = function(app) {
 	    $("li.article-ct").each(function(i, element) {
 	      // Save an empty result object
 	      var result = {};
-	      var currentdate = new Date();
+
 	      //FOX News setup
 	      result.title = $(this).find("h3").text();
 	      result.link = "http://www.foxnews.com" + $(this).find("a").attr("href");
@@ -108,6 +109,28 @@ module.exports = function(app) {
 	  })
 	});
 
+	app.get('/scrapeHuff', function(req, res) {
+	  var entry = [];
+	  request("http://www.huffingtonpost.com/section/politics", function(error, response, html) {
+	  // Then, we load that into cheerio and save it to $ for a shorthand selector
+	    var $ = cheerio.load(html);
+	    //Blaze News
+	    $("div.card").each(function(i, element) {
+	      // Save an empty result object
+	      var result = {};
+
+      	  //The Huffingtonpost setup
+      	  result.title = $(this).find("a").text();
+      	  result.link = $(this).find("a").attr("href"); 
+	      result.pubDate = currentdate.getDate() + "/"
+	                      + (currentdate.getMonth()+1)  + "/" 
+	                      + currentdate.getFullYear();
+	      entry.push(result);
+	    });
+	    //console.log(entry);
+	    res.send(entry); 
+	  })
+	});
 }
 
 

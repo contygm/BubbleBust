@@ -13,10 +13,9 @@ function saveArticle() {
 	$(".btnSave").click(function(event) {
 		var articleNumber = event.target.attributes[1].value;
 		//console.log(event);
-
-		console.log($("#articleWell-"+ articleNumber)[0].children[0].children[0].innerText);
-		console.log($("#articleWell-"+ articleNumber)[0].children[0].children[1].children[1].href);
-		console.log($("#articleWell-"+ articleNumber)[0].children[1].innerText);
+		// console.log($("#articleWell-"+ articleNumber)[0].children[0].children[0].innerText);
+		// console.log($("#articleWell-"+ articleNumber)[0].children[0].children[1].children[1].href);
+		// console.log($("#articleWell-"+ articleNumber)[0].children[1].innerText);
 
 		var title = $("#articleWell-"+ articleNumber)[0].children[0].children[0].innerText;
 		var link = $("#articleWell-"+ articleNumber)[0].children[0].children[1].children[1].href;
@@ -84,8 +83,8 @@ function displayScrapedArticles(scrapedNews) {
 		// Empties the region associated with the articles
 		$("#wellSection").empty();
 
-		console.log(scrapedNews);
-		console.log(scrapedNews.length);
+		//console.log(scrapedNews);
+		//console.log(scrapedNews.length);
 		for (var j=0; j<numResults; j++) {
 
 			// Add to the Article Counter (to make sure we show the right number)
@@ -117,7 +116,7 @@ function displayScrapedArticles(scrapedNews) {
 function runQuery(numArticles, queryURL){
 	numResults = 0;
 	allNews = [{ }];
-	// Then run a request to the Gardian(UK) API with the movie specified
+	// Then run a request to the news API 
 	//request(queryURLBase, function (error, response, body) {
 	$.ajax({url: queryURL, method: "GET"}) 
 		.done(function(gardianNews) {
@@ -125,11 +124,11 @@ function runQuery(numArticles, queryURL){
 		if ( gardianNews.status == 'ok') {
 
 			numResults = numResults + Object.keys(gardianNews.articles).length;
-			console.log(numResults);
+			//console.log(numResults);
 	
 			allNews.push.apply(allNews, gardianNews.articles);		
 		}
-		console.log(allNews);
+		//console.log(allNews);
 		//show articles on the page
 		displayArticles();
 
@@ -206,6 +205,11 @@ $("#runHill").on("click", function() {
 
 $("#runBlaze").on("click", function() {
 	route = "/scrapeBlaze";
+	ajaxCall(route);
+});
+
+$("#runHuffington").on("click", function() {
+	route = "/scrapeHuff";
 	ajaxCall(route);
 });
 
