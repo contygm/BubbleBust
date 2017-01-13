@@ -94,7 +94,7 @@ h1 {
 
 #login:hover {
     background-color: darkgreen;
-    text-decoration:underline;
+    text-decoration:underline;   
 }
 
 # page-container {
@@ -119,10 +119,10 @@ h2 {
 .article {
     float: left;
     width: 650px;
-    height: 160px;
+    height: 150px;
     border: 2px solid #FAFAFA;
     background-color: #FEFEFE;
-    padding-bottom: 10px;    
+    padding-bottom: 5px;    
 }
 
 .article-photo {
@@ -136,7 +136,7 @@ h2 {
 .article-title {
     float: left;
     margin-top: 2px;
-    color: dimgrey;
+    color: #1167a8;
     font-size: 20px;
     padding-left: 8px;
 }
@@ -152,7 +152,23 @@ h2 {
     margin-left: 10px;
 }
 
+#login-signup-container {
+ 
+    width: 400px;
+    height: 300px;
+    border: 1px solid #A91717;
+    padding: 25px;
+    margin: 75px 300px;   
+    
+}
 
-
-
+#login-container {
+    
+    width: 300px;
+    height: 30px;
+    border: 1px solid #A91717;
+    padding: 25px;
+    margin: 75px 300px;
+    
+}
 
