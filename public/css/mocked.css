@@ -99,18 +99,18 @@ h1 {
     text-decoration:underline;   
 }
 
-# page-container {
+/*#page-container {
     width: 1000px;
     margin:auto;
-}
+}*/
 
-#search-results {
+/*#search-results {
     margin-top:40px;
     margin-left: 350px;
     float: left;
     width: 650px;
     color: black;                                                
-}
+}*/
 
 h2 {
     color: black;
@@ -119,9 +119,9 @@ h2 {
 }
 
 .article {
-    float: left;
-    width: 650px;
-    height: 150px;
+    /*float: left;*/
+  /*  width: 650px;
+    height: 150px;*/
     border: 2px solid grey;
     background-color: #FEFEFE;
     padding-bottom: 5px;    
@@ -149,7 +149,7 @@ h2 {
 .article-blurb {
     font-size: 16px;
     float: left;
-    width: 480px;
+    /*width: 480px;*/
     margin-top:15px;
     margin-left: 10px;
 }

@@ -53,10 +53,23 @@ var Navigation = React.createClass({
 			       <ul className="nav navbar-nav nav-tabs nav-justified">
 				        <li><a id="mediaOne" href="">News</a></li>
 				        <li><a id="mediaOne" href="">Twitter</a></li>
-
+						<li>
+							<form className="navbar-form" role="search">
+							  <div className="form-group">
+							    <input type="text" className="form-control" placeholder="Search"/>
+							  </div>
+							  <button type="submit" className="btn btn-default">Submit</button>
+							</form>
+						</li>
 				        
 			      </ul>
 			      <ul className="nav nav-pills nav-justified">
+				        <li><a id="mediaOne" href="">News</a></li>
+				        <li><a id="mediaOne" href="">Twitter</a></li>
+				        <li><a id="mediaOne" href="">Twitter</a></li>
+				        <li><a id="mediaOne" href="">News</a></li>
+				        <li><a id="mediaOne" href="">Twitter</a></li>
+				        <li><a id="mediaOne" href="">Twitter</a></li>
 				        <li><a id="mediaOne" href="">News</a></li>
 				        <li><a id="mediaOne" href="">Twitter</a></li>
 				        <li><a id="mediaOne" href="">Twitter</a></li>
