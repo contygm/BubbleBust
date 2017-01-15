@@ -51,14 +51,15 @@ var Navigation = React.createClass({
 
 			    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			       <ul className="nav navbar-nav nav-tabs nav-justified">
+			       <a id="menu-bar-date">8 January 2017</a> 
 				        <li><a id="mediaOne" href="">News</a></li>
 				        <li><a id="mediaOne" href="">Twitter</a></li>
 						<li>
-							<form className="navbar-form" role="search">
+							<form className="navbar-form" id="navbar-top"role="search">
 							  <div className="form-group">
-							    <input type="text" className="form-control" placeholder="Search"/>
+							    <input type="text" className="form-control" id="search" placeholder="Search"/>
 							  </div>
-							  <button type="submit" className="btn btn-default">Submit</button>
+							  <button type="submit" className="btn btn-default" id="submit">Go</button>
 							</form>
 						</li>
 				        
