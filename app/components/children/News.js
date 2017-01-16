@@ -1,8 +1,8 @@
 // Include React
 var React = require("react");
-var NewsNavigation = require("./NewsNavigation");
+var NewsNavigation = require("./News/NewsNavigation");
 
-var NewsResult = require("./NewsResult");
+var NewsResult = require("./News/NewsResult");
 
 
 // Creating the Login component

@@ -1,6 +1,6 @@
 // Include React
 var React = require("react");
-var NewsNavigation = require("./News/NewsNavigation.js");
+
 // Creating the Navigation component
 var Navigation = React.createClass({	
 	render: function() {
@@ -51,16 +51,12 @@ var Navigation = React.createClass({
 
 			    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			       <ul className="nav navbar-nav nav-tabs nav-justified">
-				        <li><a id="mediaOne" href="#news">News</a></li>
+				        <li><a id="mediaOne" href="/news">News</a></li>
 				        <li><a id="mediaOne" href="">Twitter</a></li>
 
 				        
 			      </ul>
-			      <ul className="nav nav-pills nav-justified">
-				        <li><a id="mediaOne" href="#news">News</a></li>
-				        <li><a id="mediaOne" href="">Twitter</a></li>
-				        <li><a id="mediaOne" href="">Twitter</a></li>
-			      </ul>
+
 			    </div>
 			</nav>
 		</div>
