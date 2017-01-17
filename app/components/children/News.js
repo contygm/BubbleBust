@@ -9,7 +9,7 @@ var NewsResult = require("./News/NewsResult");
 var News = React.createClass({	
 	render: function() {
 	    return (
-            <div>
+            <div className="container">
                 <NewsNavigation/>
 
                 <NewsResult />

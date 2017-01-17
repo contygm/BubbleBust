@@ -20,10 +20,11 @@ var Main = React.createClass({
 	// Here we render the function
 	render: function() {
 		return (
-			<div>
+			<div className="container">
 				<Navigation/>
-				{/*<Login /> */}
-				
+
+				{this.props.children}
+				<Footer/>
 			</div>
 		);
 	}

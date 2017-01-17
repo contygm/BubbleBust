@@ -15,8 +15,8 @@ ReactDOM.render(
 
 		{/*High level component is the Main component*/}
 		<Route path='/' component={Main}>
-			<Route path='/news' component={News} />
-			
+			<Route path='news' component={News} />
+			<Route path='saved' component={Saved} />
 		</Route>
 
 	</Router>,

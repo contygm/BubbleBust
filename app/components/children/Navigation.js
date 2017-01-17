@@ -1,12 +1,12 @@
 // Include React
 var React = require("react");
-
+import { Link } from "react-router";
 // Creating the Navigation component
 var Navigation = React.createClass({	
 	render: function() {
 	    return (
 		    
-		    <div>
+		    <div className="container">
 		    	<div id="topbar">
 	        		<h1>BubbleBust</h1>  
 	      		</div>         
@@ -51,7 +51,7 @@ var Navigation = React.createClass({
 
 			    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			       <ul className="nav navbar-nav nav-tabs nav-justified">
-				        <li><a id="mediaOne" href="/news">News</a></li>
+				        <li><Link to="news">News</Link></li>
 				        <li><a id="mediaOne" href="">Twitter</a></li>
 
 				        
