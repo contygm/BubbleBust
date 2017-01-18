@@ -52,9 +52,10 @@ var Navigation = React.createClass({
 			    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			       <ul className="nav navbar-nav nav-tabs nav-justified">
 				        <li><Link to="news">News</Link></li>
+				        
 				        <li><a id="mediaOne" href="">Twitter</a></li>
 
-				        
+				        <li><Link to="saved">Saved Articles</Link></li>
 			      </ul>
 
 			    </div>

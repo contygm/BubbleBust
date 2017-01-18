@@ -7,7 +7,7 @@ var DeleteItem = require('./NewsItems/DeleteItem');
 
 
 // Helper Function
-//var helpers = require('../utils/helpers');
+var helpers = require('../../utils/helpers');
 
 var SavedArticles = React.createClass({
 
@@ -52,7 +52,7 @@ var SavedArticles = React.createClass({
 
 		return(
 			<div>
-				<Result fa="fa fa-download" text="Saved Articles">
+				<NewsResult fa="fa fa-download" text="Saved Articles">
 		  		{this.state.results.map(function(result) {
 			  		return (
 			  			<DeleteItem 
@@ -65,7 +65,7 @@ var SavedArticles = React.createClass({
 			  			/>
 			  		)
 			  	})}
-			  </Result>
+			  </NewsResult>
 
 			</div>
 		)

@@ -36,16 +36,16 @@ module.exports = function(app) {
 			}
 		})
 	})
-	// when user hits delete
-	// app.delete('/api/saved/:id', function(req, res){
-	// 	SavedArticle
-	// 		.remove({_id: req.params.id})
-	// 		.exec(function(err){
-	// 			if(err) {
-	// 				res.json({status: 'err'})
-	// 			} else {
-	// 				res.json({status: 'deleted'})
-	// 			}
-	// 		})
-	// })
+	//when user hits delete
+	app.delete('/api/saved/:id', function(req, res){
+		SavedArticle
+			.remove({_id: req.params.id})
+			.exec(function(err){
+				if(err) {
+					res.json({status: 'err'})
+				} else {
+					res.json({status: 'deleted'})
+				}
+			})
+	})
 }

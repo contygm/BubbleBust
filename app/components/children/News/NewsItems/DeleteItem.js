@@ -39,12 +39,12 @@ var ListItem = React.createClass({
             	<em>{this.props.title}</em>
             	<div className="btn-group pull-right">
             		<button className="btn btn-primary" data-toggle="modal" onClick={this.handleClick}>Delete</button>
-            		<a className="btn btn-default" href={this.props.url} target="_blank">
+            		<a className="btn btn-default" href={this.props.link} target="_blank">
             			View Article
             		</a>
             	</div>
             </h3>
-            <p>Date Published: {this.props.date}</p>
+            <p>Date Published: {this.props.pubDate}</p>
           </li>
          : null}
       </div>

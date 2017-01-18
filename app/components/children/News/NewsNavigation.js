@@ -1,6 +1,6 @@
 // Include React
 var React = require("react");
-
+import { Link } from "react-router";
 // Creating the Navigation component
 var NewsNavigation = React.createClass({	
 	render: function() {
