@@ -2,12 +2,13 @@
 var React = require("react");
 
 // Helper for making AJAX and Twitter Requests
-var helpers = require("./utils/helpers");
+var helpers = require("../config/helpers");
 
-var Navigation = require("./children/Navigation.js");
-var Login = require("./children/Login.js")
-var Result = require("./children/Result.js");
-var Footer = require("./children/Footer.js");
+var Scrape = require("../components/children/Scrape");
+var Twitter = require("../components/children/Twitter");
+var Login = require("../components/children/Login");
+var Result = require("../components/children/Result");
+var Footer = require("../components/children/Footer");
 
 // Creating the Results component
 var Main = React.createClass({
@@ -17,10 +18,25 @@ var Main = React.createClass({
 	render: function() {
 		return (
 			<div>
+				<div id="topbar">
+	        		<h1>BubbleBust</h1>  
+	      		</div> 
+
+	      		<div className="row">
+
+		          {/* This code will dump the correct Child Component */}
+		          {this.props.children}
+
+		        </div>
+				
+				{/*
 				<Navigation/>
-				{/*<Login /> */}
+				<Login /> 
 				<Result />
 				<Footer />
+
+			*/}
+				
 			</div>
 		);
 	}

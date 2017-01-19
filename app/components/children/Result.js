@@ -7,7 +7,6 @@ var Result = React.createClass({
 	    return (
 	    	<div id="page-container">
                 <div id="search-results">
-                    <h2>Search Results</h2>
                     <div className="article" type="box">
                         <img className="article-photo" src="http://talentandgenius.com/wp-content/uploads/Bubble-Up.jpg"/>
                         <a className="article-title" href="">This Can Be Where a Tweet Goes</a>
