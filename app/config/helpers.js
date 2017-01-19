@@ -32,7 +32,8 @@ var helper = {
   	return axios.get(route)
   	.then(function(response){
   		console.log(response)
-  	}.bind(this))
+  		return response
+  	})
 
   },
 

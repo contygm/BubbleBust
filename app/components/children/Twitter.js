@@ -7,20 +7,31 @@ var helpers = require("../../config/helpers");
 // Creating the Navigation component
 var Twitter = React.createClass({
 
-	// componentDidMount: function(){},
+	
 	// componentDidUpdate: function(){
 	// 	helpers.getMyTweets()
 	// },
 	getInitialState: function(){
 		return {
-			route: ""
+			tweetData: []
 		}
+	},
+	componentDidMount: function(){
+		var route = "/Twitter/Executive/Executive";
+		helpers.getMyTweets(route)
+			.then(function(data){
+				console.log("Mongo Data: ", data)
+				this.setState({tweetData: data})
+			}.bind(this));
 	},
 	handleClick: function(event){
 		var route = event.target.href;
 		console.log(route);
-		this.setState({route: route});
-		helpers.getMyTweets(route);
+		helpers.getMyTweets(route)
+			.then(function(data){
+				console.log("Mongo Data: ", data)
+				this.setState({tweetData: data})
+			}.bind(this));
 	},
 
 	render: function() {
@@ -39,7 +50,7 @@ var Twitter = React.createClass({
 			        </div>            
 		      	</div>   
 		      	<div className="seperator"></div> 
-		      	<Result />     
+		      	<Result tweets={this.state.tweetData}/>     
 	       	</div>
 	    )
 	}

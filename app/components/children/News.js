@@ -19,8 +19,7 @@ var News = React.createClass({
 			              <a id="mediaTen" href="" className="no-border">Media10</a>      
 			        </div>            
 		      	</div>   
-		      	<div className="seperator"></div> 
-		      	<Result />      
+		      	<div className="seperator"></div>       
 	       	</div>
 	    )
 	}
