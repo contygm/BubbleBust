@@ -44,10 +44,12 @@ db.once("open", function() {
 // -------------------------------------------------
 
 // Main "/" Route. This will redirect the user to our rendered React application
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/public/index.html");
-});
+// app.get("/", function(req, res) {
+//   res.sendFile(__dirname + "/public/index.html");
+// });
 
+var routes = require("./controllers/routes.js");
+app.use("/", routes);
 // -------------------------------------------------
 
 // Listener

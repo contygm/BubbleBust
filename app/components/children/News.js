@@ -1,5 +1,6 @@
 // Include React
 var React = require("react");
+var Result = require("./Result");
 
 // Creating the Navigation component
 var News = React.createClass({	
@@ -18,7 +19,8 @@ var News = React.createClass({
 			              <a id="mediaTen" href="" className="no-border">Media10</a>      
 			        </div>            
 		      	</div>   
-		      	<div className="seperator"></div>      
+		      	<div className="seperator"></div> 
+		      	<Result />      
 	       	</div>
 	    )
 	}

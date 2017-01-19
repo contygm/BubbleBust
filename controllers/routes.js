@@ -3,14 +3,13 @@ var router = express.Router();
 var mongoose = require("mongoose");
 var Promise = require("bluebird");
 mongoose.Promise = Promise;
-var helpers = require("./utils/helpers");
+var helpers = require("../app/config/helpers");
 
 // Require Schemas
 var Executive = require("../models/Executive");
 var Legislative = require("../models/Legislative");
 var Organization = require("../models/Organization");
 var Parties = require("../models/Parties");
-
 
 router.get("/", function (req, res) {
 	res.sendFile(__dirname + "/public/index.html");
@@ -20,7 +19,7 @@ router.get("/", function (req, res) {
 // GET twitter
 
 
-router.get("/twitter/:collection/:branch", function(req, res) {
+router.get("/Twitter/:collection/:branch", function(req, res) {
 	// get collection and type 
 	var collection = req.params.collection;
 	var branch = req.params.branch;
@@ -37,10 +36,12 @@ router.get("/twitter/:collection/:branch", function(req, res) {
 			    }
 			    else {
 			    	console.log(doc)
-			    	for (var i = 0; i < doc.length; i++) {
-			    	  console.log(doc)
-        			  return helpers.getTweets(doc.handle)
-        			} 
+			    	res.send(doc);
+			    	// for (var i = 0; i < doc.length; i++) {
+			    	//   console.log(doc)
+        // 			  // return helpers.getTweets(doc.handle)
+        // 			  res.send(doc);
+        // 			} 
 			    }
 			});
 			break;

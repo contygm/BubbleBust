@@ -12,7 +12,10 @@ var Result = require("../components/children/Result");
 // Creating the Results component
 var Main = React.createClass({
 	// componentDidMount: function(){},
-	// componentDidUpdate: function(){},
+	// componentDidUpdate: function(){
+	// 	helpers.getMyTweets()
+	// },
+
 	// Here we render the function
 	render: function() {
 		return (

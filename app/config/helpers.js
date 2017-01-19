@@ -7,28 +7,36 @@
 //   access_token_secret: "ZgMuaTKCbxjVQLIewzdyPnQ4CwJBCvYhCW2t92mLBo9Vb"
 // };
 
-// var helper = {
-//   getMyTweets: function(handle) {
+// var client = new Twitter(twitterKeys);
 
-//     var client = new Twitter(twitterKeys);
+    // var params = { screen_name: handle };
+    // client.get("statuses/user_timeline", params, function(error, tweets, response) {
+    //   if (!error) {
+    //     // for (var i = 0; i < tweets.length; i++) {
+    //     //   console.log(tweets[i].created_at);
+    //     //   console.log("");
+    //     //   console.log(tweets[i].text);
+    //     // }
 
-//     var params = { screen_name: handle };
-//     client.get("statuses/user_timeline", params, function(error, tweets, response) {
-//       if (!error) {
-//         // for (var i = 0; i < tweets.length; i++) {
-//         //   console.log(tweets[i].created_at);
-//         //   console.log("");
-//         //   console.log(tweets[i].text);
-//         // }
+    //     console.log(tweets);
+    //     return tweets;
 
-//         console.log(tweets);
-//         return tweets;
+    //   }
+    // });
+var axios = require("axios");
 
-//       }
-//     });
-//   },
-  
-// }
+var helper = {
+  getMyTweets: function(route) {
+  	console.log(route);
 
-// module.exports = helper;
+  	return axios.get(route)
+  	.then(function(response){
+  		console.log(response)
+  	}.bind(this))
+
+  },
+
+}
+
+module.exports = helper;
 
