@@ -1,7 +1,5 @@
 // Include React
 var React = require("react");
-var Result = require("./Result");
-
 // Creating the Navigation component
 var News = React.createClass({	
 	render: function() {

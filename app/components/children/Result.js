@@ -11,8 +11,8 @@ var Result = React.createClass({
                         return (
                             <div id={i} key={i} className="article" type="box">
                                 <img className="article-photo" src="http://talentandgenius.com/wp-content/uploads/Bubble-Up.jpg"/>
-                                <a className="article-title" href="">{tweets.title}</a>
-                                <p className="article-blurb" >{tweets.handle}</p>
+                                <a className="article-title" href="">{result.title}</a>
+                                <p className="article-blurb" >{result.handle}</p>
                             </div> 
                         )
                     })};

@@ -13,7 +13,8 @@ var Twitter = React.createClass({
 	// },
 	getInitialState: function(){
 		return {
-			tweetData: []
+			tweetData: [],
+			route: ""
 		}
 	},
 	componentDidMount: function(){
@@ -24,9 +25,15 @@ var Twitter = React.createClass({
 				this.setState({tweetData: data})
 			}.bind(this));
 	},
+	// componentDidUpdate: function(){
+	// 	;
+	// },
+
 	handleClick: function(event){
+		event.preventDefault();
 		var route = event.target.href;
 		console.log(route);
+		// this.setState({route: route})
 		helpers.getMyTweets(route)
 			.then(function(data){
 				console.log("Mongo Data: ", data)

@@ -35,7 +35,7 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
 			      console.log(err);
 			    }
 			    else {
-			    	res.send(doc);
+			    	res.json(doc);
 			    }
 			});
 			break;
