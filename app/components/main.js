@@ -27,7 +27,7 @@ var Main = React.createClass({
 		              	<a id="" href="#/Twitter">Twitter</a>
 		              	<a id="" href="#/News">News</a>
 		                <input type="text" id="search" placeholder="Search"/>
-		                <button id="login" href="#/Login">Login</button>
+		                <button id="login"><a id="" href="#/Login">Login</a></button>
 		           </div>               
 		       	</div>         
 		        <div className="seperator"></div>  

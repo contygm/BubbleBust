@@ -8,14 +8,14 @@ var Twitter = React.createClass({
 		    <div>
 		      	<div id="tab-bar-news-sources">            
 			        <div id="tab-bar-news-sources-menu">             
-			              <a id="mediaOne" href="">Twitter1</a>                    
-			              <a id="mediaTwo" href="">Media2</a>                
-			              <a id="mediaThree" href="">Media3</a>                    
-			              <a id="mediaFour" href="">Media4</a>                    
-			              <a id="mediaFive" href="">Media5</a>                   
-			              <a id="mediaSix" href="">Media6</a>                    
-			              <a id="mediaSeven" href="">Media7</a>                                         
-			              <a id="mediaTen" href="" className="no-border">Media10</a>      
+			              <a id="mediaOne" href="">Executive Branch</a>                    
+			              <a id="mediaTwo" href="">Judicial Branch</a>                
+			              <a id="mediaThree" href="">Senate</a>                    
+			              <a id="mediaFour" href="">Government Departments</a>                    
+			              <a id="mediaFive" href="">Political Parties</a>                   
+			              <a id="mediaSix" href="">Research Organizations</a>                    
+			              <a id="mediaSeven" href="">Non-Profits</a>                                         
+			              <a id="mediaTen" href="" className="no-border">Think Tanks</a>      
 			        </div>            
 		      	</div>   
 		      	<div className="seperator"></div>      

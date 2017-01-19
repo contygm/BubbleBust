@@ -32,13 +32,14 @@ module.exports = (
   <Router history={hashHistory}>
 
     <Route path="/" component={Main}>
+    	<Route path="Login" component={Login} />
 
       {/* If user selects Child1 then show the appropriate component*/}
       <Route path="News" component={News} >
 
         <Route path="Result" component={Result} />
 
-        <IndexRoute component={Result} />
+        <IndexRoute component={News} />
 
       </Route>
 
@@ -48,15 +49,15 @@ module.exports = (
       
   		<Route path="Result" component={Result} />
 
-        <IndexRoute component={Result} />
+        <IndexRoute component={Twitter} />
       
       </Route>
 
-      {/* If user selects any other path... we get the Home Route 
+     
+  	  
 
-      <IndexRoute component={Child1} />
-  		*/}
-  	  <Route path="Login" component={Login} />
+  	   {/* If user selects any other path... we get the Home Route */}
+  	  <IndexRoute component={News} />
 
     </Route>
   </Router>
