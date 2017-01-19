@@ -4,11 +4,10 @@ var React = require("react");
 // Helper for making AJAX and Twitter Requests
 var helpers = require("../config/helpers");
 
-var Scrape = require("../components/children/Scrape");
+var News = require("../components/children/News");
 var Twitter = require("../components/children/Twitter");
 var Login = require("../components/children/Login");
 var Result = require("../components/children/Result");
-var Footer = require("../components/children/Footer");
 
 // Creating the Results component
 var Main = React.createClass({
@@ -21,6 +20,17 @@ var Main = React.createClass({
 				<div id="topbar">
 	        		<h1>BubbleBust</h1>  
 	      		</div> 
+	      		<div className="seperator"></div>
+	      		<div id="menu-bar-2-container">                 
+		          <div id="menu-bar-2">                                 
+		              	<a id="menu-bar-date">8 January 2017</a>                 
+		              	<a id="" href="#/Twitter">Twitter</a>
+		              	<a id="" href="#/News">News</a>
+		                <input type="text" id="search" placeholder="Search"/>
+		                <button id="login" href="#/Login">Login</button>
+		           </div>               
+		       	</div>         
+		        <div className="seperator"></div>  
 
 	      		<div className="row">
 
@@ -28,14 +38,6 @@ var Main = React.createClass({
 		          {this.props.children}
 
 		        </div>
-				
-				{/*
-				<Navigation/>
-				<Login /> 
-				<Result />
-				<Footer />
-
-			*/}
 				
 			</div>
 		);
