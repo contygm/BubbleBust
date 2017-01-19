@@ -27,23 +27,31 @@ twitterKeys = {
   access_token_secret: "ZgMuaTKCbxjVQLIewzdyPnQ4CwJBCvYhCW2t92mLBo9Vb"
 };
 
-var client = new Twitter(twitterKeys);
+var getMyTweets = function(handle) {
 
-    // var params = { screen_name: handle };
-    // client.get("statuses/user_timeline", params, function(error, tweets, response) {
-    //   if (!error) {
-    //     // for (var i = 0; i < tweets.length; i++) {
-    //     //   console.log(tweets[i].created_at);
-    //     //   console.log("");
-    //     //   console.log(tweets[i].text);
-    //     // }
+  var client = new Twitter(twitterKeys);
 
-    //     console.log(tweets);
-    //     return tweets;
-
-    //   }
-    // });
-
+  var params = { screen_name: handle };
+  client.get("statuses/user_timeline", params, function(error, tweets, response) {
+    if (!error) {
+      for (var i = 0; i < tweets.length; i++) {
+      	console.log(tweets[i].user.name);
+        console.log(tweets[i].user.screen_name);
+        console.log(tweets[i].created_at);
+        console.log("");
+        console.log(tweets[i].text);
+        
+      	return ({
+      		userName: tweets[i].user.name,
+      		screenName: tweets[i].user.screen_name,
+      		createdAt: tweets[i].created_at,
+      		text: tweets[i].text
+      	})
+        
+      }
+    }
+  });
+};
 
 router.get("/Twitter/:collection/:branch", function(req, res) {
 	// get collection and type 
@@ -61,7 +69,11 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
 			      console.log(err);
 			    }
 			    else {
-			    	res.json(doc);
+			    	res.send(function(){
+			    		for (var i = 0; i < doc.length; i++){
+			    			getMyTweets(doc[i].handle)
+			    		}
+			    	})
 			    }
 			});
 			break;
