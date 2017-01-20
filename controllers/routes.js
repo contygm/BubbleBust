@@ -35,19 +35,11 @@ var getMyTweets = function(handle) {
   client.get("statuses/user_timeline", params, function(error, tweets, response) {
     if (!error) {
       for (var i = 0; i < tweets.length; i++) {
-      	console.log(tweets[i].user.name);
+        console.log(tweets[i].user.name);
         console.log(tweets[i].user.screen_name);
         console.log(tweets[i].created_at);
-        console.log("");
         console.log(tweets[i].text);
-        
-      	return ({
-      		userName: tweets[i].user.name,
-      		screenName: tweets[i].user.screen_name,
-      		createdAt: tweets[i].created_at,
-      		text: tweets[i].text
-      	})
-        
+      	return (tweets)
       }
     }
   });
@@ -69,11 +61,11 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
 			      console.log(err);
 			    }
 			    else {
-			    	res.send(function(){
-			    		for (var i = 0; i < doc.length; i++){
-			    			getMyTweets(doc[i].handle)
-			    		}
-			    	})
+			    	var allTweets = {}
+			    	for (var i = 0; i < doc.length; i++){
+			    		allTweets += getMyTweets(doc[i].handle);
+			    	}
+			    	res.send(allTweets);
 			    }
 			});
 			break;
