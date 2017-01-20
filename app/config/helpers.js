@@ -7,8 +7,8 @@ var helper = {
 
   	return axios.get(route)
   	.then(function(response){
-  		console.log(response.data)
-  		return response.data
+  		console.log(response.data);
+  		return response.data;
   	})
 
   },

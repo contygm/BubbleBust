@@ -29,7 +29,7 @@ var Twitter = React.createClass({
 	// },
 
 	handleClick: function(event){
-		// event.preventDefault();
+		event.preventDefault();
 		var route = event.target.href;
 		console.log(route);
 		helpers.getMyTweets(route)

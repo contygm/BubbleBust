@@ -35,11 +35,15 @@ var getMyTweets = function(handle) {
   client.get("statuses/user_timeline", params, function(error, tweets, response) {
     if (!error) {
       for (var i = 0; i < tweets.length; i++) {
-        console.log(tweets[i].user.name);
-        console.log(tweets[i].user.screen_name);
-        console.log(tweets[i].created_at);
-        console.log(tweets[i].text);
-      	return (tweets)
+        
+        var tweetObj = {
+        	userName: tweets[i].user.name,
+        	screenName: tweets[i].user.screen_name,
+        	createdAt: tweets[i].created_at,
+        	text: tweets[i].text
+        }
+        console.log(tweetObj);
+      	return (tweetObj)
       }
     }
   });
@@ -55,8 +59,40 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
 	// get records branch n such
 
 	switch(collection){
+		
+		case "Executive":
+			Executive.find({branch: {$eq: branch}}, function(err, doc) {
+			    if (err) {
+			      console.log(err);
+			    }
+			    else {
+			    	
+			    	for (var i = 0; i < doc.length; i++){
+			    		getMyTweets(doc[i].handle);
+			    	}
+			    	console.log()
+			    	res.json();
+			    }
+			});
+			break;
 		case "Organization":
 			Organization.find({branch: {$eq: branch}}, function(err, doc) {
+			    if (err) {
+			      console.log(err);
+			    }
+			    else {
+			    	var allTweets = []
+			    	for (var i = 0; i < doc.length; i++){
+			    		allTweets += getMyTweets(doc[i].handle);
+			    	}
+			    	console.log(allTweets)
+			    	res.send(allTweets);
+			    }
+			});
+			break;
+		
+		case "Legislative":
+			Legislative.find({position: {$eq: branch}}, function(err, doc) {
 			    if (err) {
 			      console.log(err);
 			    }
@@ -65,27 +101,8 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
 			    	for (var i = 0; i < doc.length; i++){
 			    		allTweets += getMyTweets(doc[i].handle);
 			    	}
+			    	console.log(allTweets)
 			    	res.send(allTweets);
-			    }
-			});
-			break;
-		case "Executive":
-			Executive.find({branch: {$eq: branch}}, function(err, doc) {
-			    if (err) {
-			      console.log(err);
-			    }
-			    else {
-			    	res.send(doc);
-			    }
-			});
-			break;
-		case "Legislative":
-			Legislative.find({position: {$eq: branch}}, function(err, doc) {
-			    if (err) {
-			      console.log(err);
-			    }
-			    else {
-			    	res.send(doc);
 			    }
 			});
 			break;
@@ -95,7 +112,12 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
 			      console.log(err);
 			    }
 			    else {
-			    	res.send(doc);
+			    	var allTweets = {}
+			    	for (var i = 0; i < doc.length; i++){
+			    		allTweets += getMyTweets(doc[i].handle);
+			    	}
+			    	console.log(allTweets)
+			    	res.send(allTweets);
 			    }
 			});
 			break;
