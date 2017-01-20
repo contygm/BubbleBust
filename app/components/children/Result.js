@@ -7,16 +7,24 @@ var Result = React.createClass({
 	    return (
 	    	<div id="page-container">
                 <div id="search-results">    
-                    {this.props.tweets.map(function(result, i) {
+                    {this.props.tweets.map(function(allTweets, i) {
                         return (
-                            <div id={i} key={i} className="article" type="box">
-                                <img className="article-photo" src="http://talentandgenius.com/wp-content/uploads/Bubble-Up.jpg"/>
-                                <a className="article-title" href="">{result.title}</a>
-                                <p className="article-blurb" >{result.handle}</p>
+                            <div id={i} key={i} >
+                                {allTweets.map(function(singleTweets, k){
+                                    return (
+
+                                        <div id={k} key={k} className="article" type="box"> 
+                                            
+                                            <h2 >{singleTweets.userName}</h2>
+                                            <p >{singleTweets.screenName}</p>
+                                            <a className="article-title" href="">{singleTweets.createdAt}</a>
+                                            <p className="article-blurb" >{singleTweets.text}</p>
+                                        </div>
+                                    )
+                                })} 
                             </div> 
                         )
-                    })};
-                    
+                    })}; 
                 </div>
             </div>
 	    )

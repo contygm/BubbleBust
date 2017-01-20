@@ -29,8 +29,8 @@ app.use(express.static("./public"));
 
 
 //mongodb://heroku_nhk3bbmv:7dml376seb3b2ousnha7pg75s@ds155418.mlab.com:55418/heroku_nhk3bbmv
-
-mongoose.connect("mongodb://localhost/bubbleBust");
+//localhost/bubbleBust
+mongoose.connect("mongodb://mongodb://heroku_nhk3bbmv:7dml376seb3b2ousnha7pg75s@ds155418.mlab.com:55418/heroku_nhk3bbmv");
 var db = mongoose.connection;
 
 db.on("error", function(err) {

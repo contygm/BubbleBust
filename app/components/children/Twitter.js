@@ -6,8 +6,6 @@ var helpers = require("../../config/helpers");
 
 // Creating the Navigation component
 var Twitter = React.createClass({
-
-	
 	// componentDidUpdate: function(){
 	// 	helpers.getMyTweets()
 	// },
@@ -20,8 +18,8 @@ var Twitter = React.createClass({
 		var route = "/Twitter/Executive/Executive";
 		helpers.getMyTweets(route)
 			.then(function(data){
-				console.log("Mongo Data: ", data)
-				this.setState({tweetData: data})
+				console.log("Mongo Data: ", data.data)
+				this.setState({tweetData: data.data})
 			}.bind(this));
 	},
 	// componentDidUpdate: function(){
@@ -34,8 +32,8 @@ var Twitter = React.createClass({
 		console.log(route);
 		helpers.getMyTweets(route)
 			.then(function(data){
-				console.log("Mongo Data: ", data)
-				this.setState({tweetData: data})
+				console.log("Mongo Data: ", data.data)
+				this.setState({tweetData: data.data})
 			}.bind(this));
 	},
 

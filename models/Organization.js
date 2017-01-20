@@ -20,4 +20,4 @@ var Organization = mongoose.model("Organization", OrganizationSchema, "Organizat
 module.exports = Organization;
 
 //mongoimport -h ds155418.mlab.com:55418 -d heroku_nhk3bbmv --collection Organizations -u contygm -p contygm --file Organization.csv --type csv --headerline
-//mongoimport -d bubbleBust --collection Parties --file Parties.csv --type csv --headerline
+//mongoimport -d bubbleBust --collection Executive --file Executive.csv --type csv --headerline

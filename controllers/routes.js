@@ -27,27 +27,54 @@ twitterKeys = {
   access_token_secret: "ZgMuaTKCbxjVQLIewzdyPnQ4CwJBCvYhCW2t92mLBo9Vb"
 };
 
-var getMyTweets = function(handle) {
+var getTweet = function(handle, callback) {
+  if (handle === 'n/a') {
+      return callback(null, null)
+  }
 
-  var client = new Twitter(twitterKeys);
+  var client = new Twitter(twitterKeys),
+      params = { screen_name: handle };
 
-  var params = { screen_name: handle };
   client.get("statuses/user_timeline", params, function(error, tweets, response) {
-    if (!error) {
+    if (error) {
+      return callback(null, null)
+    }
+
+    var all = [];
+
       for (var i = 0; i < tweets.length; i++) {
-        
-        var tweetObj = {
+        all.push({
         	userName: tweets[i].user.name,
         	screenName: tweets[i].user.screen_name,
         	createdAt: tweets[i].created_at,
         	text: tweets[i].text
-        }
-        console.log(tweetObj);
-      	return (tweetObj)
+        });
       }
-    }
+
+      callback(null, all);
   });
 };
+
+function getAllTweets (doc, callback) {
+    var count = 0,
+        tweets = [];
+
+    for (var i = 0; i < doc.length; i++){
+        getTweet(doc[i].handle, function (error, tweet) {
+          if (error) {
+            return callback(error);
+          }
+
+          tweets.push(tweet);  
+          count++;
+
+          if (count === doc.length) {
+            return callback(null, tweets);
+          }
+        });
+    }
+}
+
 
 router.get("/Twitter/:collection/:branch", function(req, res) {
 	// get collection and type 
@@ -59,50 +86,55 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
 	// get records branch n such
 
 	switch(collection){
-		
 		case "Executive":
 			Executive.find({branch: {$eq: branch}}, function(err, doc) {
 			    if (err) {
 			      console.log(err);
 			    }
+
 			    else {
-			    	
-			    	for (var i = 0; i < doc.length; i++){
-			    		getMyTweets(doc[i].handle);
-			    	}
-			    	console.log()
-			    	res.json();
+			        getAllTweets(doc, function (error, result) {	
+                        if (error) {
+                            console.error(error);
+                            return res.send(error);
+                        }
+
+                        return res.json(result); 
+                    });
 			    }
 			});
-			break;
+			break;		
 		case "Organization":
 			Organization.find({branch: {$eq: branch}}, function(err, doc) {
 			    if (err) {
 			      console.log(err);
 			    }
 			    else {
-			    	var allTweets = []
-			    	for (var i = 0; i < doc.length; i++){
-			    		allTweets += getMyTweets(doc[i].handle);
-			    	}
-			    	console.log(allTweets)
-			    	res.send(allTweets);
+			    	getAllTweets(doc, function (error, result) {	
+                        if (error) {
+                            console.error(error);
+                            return res.send(error);
+                        }
+
+                        return res.json(result); 
+                    });
 			    }
 			});
 			break;
-		
 		case "Legislative":
 			Legislative.find({position: {$eq: branch}}, function(err, doc) {
 			    if (err) {
 			      console.log(err);
 			    }
 			    else {
-			    	var allTweets = {}
-			    	for (var i = 0; i < doc.length; i++){
-			    		allTweets += getMyTweets(doc[i].handle);
-			    	}
-			    	console.log(allTweets)
-			    	res.send(allTweets);
+			    	getAllTweets(doc, function (error, result) {	
+                        if (error) {
+                            console.error(error);
+                            return res.send(error);
+                        }
+
+                        return res.json(result); 
+                    });
 			    }
 			});
 			break;
@@ -112,12 +144,14 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
 			      console.log(err);
 			    }
 			    else {
-			    	var allTweets = {}
-			    	for (var i = 0; i < doc.length; i++){
-			    		allTweets += getMyTweets(doc[i].handle);
-			    	}
-			    	console.log(allTweets)
-			    	res.send(allTweets);
+			    	getAllTweets(doc, function (error, result) {	
+                        if (error) {
+                            console.error(error);
+                            return res.send(error);
+                        }
+
+                        return res.json(result); 
+                    });
 			    }
 			});
 			break;
