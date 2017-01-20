@@ -18,7 +18,7 @@ var Main = React.createClass({
 		return (
 			<div>
 				<Navigation/>
-				{/*<Login /> */}
+				{/*<Login />*/}
 				<Result />
 				<Footer />
 			</div>
