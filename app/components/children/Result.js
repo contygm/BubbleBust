@@ -6,23 +6,15 @@ var Result = React.createClass({
 	render: function() {
 	    return (
 	    	<div id="page-container">
-                <div id="search-results">    
-                    {this.props.tweets.map(function(allTweets, i) {
+                <div className="row">    
+                    {this.props.tweets.map(function(tweets, i) {
                         return (
-                            <div id={i} key={i} className="row">
-                                {allTweets.map(function(singleTweets, k){
-                                    return (
-
-                                        <div id={k} key={k} className="col s3"> 
-                                            
-                                            <h2 >{singleTweets.userName}</h2>
-                                            <p >{singleTweets.screenName}</p>
-                                            <a className="" href="">{singleTweets.createdAt}</a>
-                                            <p className="" >{singleTweets.text}</p>
-                                        </div>
-                                    )
-                                })} 
-                            </div> 
+                            <div id={i} key={i} className="col-sm-3"> 
+                                <h2 >{tweets.userName}</h2>
+                                <p >{tweets.screenName}</p>
+                                <a className="" href="">{tweets.createdAt}</a>
+                                <p className="" >{tweets.text}</p>
+                            </div>   
                         )
                     })}; 
                 </div>

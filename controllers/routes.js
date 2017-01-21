@@ -33,7 +33,7 @@ var getTweet = function(handle, callback) {
   }
 
   var client = new Twitter(twitterKeys),
-      params = { screen_name: handle };
+      params = { screen_name: handle, count: 10 };
 
   client.get("statuses/user_timeline", params, function(error, tweets, response) {
     if (error) {
@@ -69,26 +69,17 @@ function getAllTweets (doc, callback) {
           	count++;
           }
           if (count === doc.length) {
-          	var merged = [].concat.apply([], tweets);
-            return callback(null, merged);
+          	// concat tweet array, sort most recent by date
+          	var merged = [].concat.apply([], tweets).sort(function(a,b) { 
+				    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+				})
+            
+            // return lastest 100
+            return callback(null, merged.slice(0, 100));
           }
         });
     }
 }
-
-// function removeNull(tweets, callback){
-// 	var count = 0,
-// 		newTweets = [];
-
-// 	for (var i = 0; i < tweets.length; i++){
-// 		if (tweets[i] != null){
-// 			newTweets.push(tweets[i]);
-// 			count++
-// 		}
-
-
-// 	}
-// }
 
 
 router.get("/Twitter/:collection/:branch", function(req, res) {
