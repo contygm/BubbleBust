@@ -7,7 +7,7 @@ var Result = React.createClass({
 	    return (
 	    	<div id="page-container" className="container">
                 <div id="search-results" className="row"> 
-                    <div className="article col-xs-12 col-sm-6  col-md-4 col-lg-3" type="box" id="article-box">
+                    <div className="article col-xs-12 col-sm-6 col-md-4 col-lg-3" type="box" id="article-box">
                     
                         <img className="article-photo" id="article-photo" src="http://talentandgenius.com/wp-content/uploads/Bubble-Up.jpg"/>
 
