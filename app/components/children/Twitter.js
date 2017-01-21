@@ -30,6 +30,7 @@ var Twitter = React.createClass({
 		event.preventDefault();
 		var route = event.target.href;
 		console.log(route);
+		
 		helpers.getMyTweets(route)
 			.then(function(data){
 				console.log("Mongo Data: ", data.data)
