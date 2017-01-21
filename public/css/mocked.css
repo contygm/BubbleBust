@@ -15,7 +15,7 @@ h1 {
 
  }
 
- #add-nav-bar-color:hover {
+ #add-nav-bar-color li:hover {
 
     background-color: #abecea;
 
@@ -24,6 +24,10 @@ h1 {
 
 .navbar{
     margin-bottom: 0;
+}
+
+.nav2 {
+    margin-bottom: 20px;
 }
 
 #date {
@@ -79,9 +83,8 @@ h1 {
 }
 
 .article {
-    
-    width: 650px;
-    height: 150px;
+    /*width: 650px;
+    height: 150px;*/
     border-radius: 18px;
     border: 5px grey;
 
@@ -116,7 +119,7 @@ h1 {
 
 .article-title:hover {
     color: #a054d3;
-    
+
 }
 
 .article-text{
@@ -131,7 +134,7 @@ h1 {
 
 .article-blurb {
     
-    float: left;
+  /*  float: left;*/
     /*text-align: center;*/
     margin-top:0px;
     margin-right: 25px;

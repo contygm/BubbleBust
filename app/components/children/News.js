@@ -21,7 +21,7 @@ var News = React.createClass({
 				    </div>
 				</nav>
 
-			     <Result />
+			    {/* <Result />*/}
 	      	</div>
 	    )
 	}

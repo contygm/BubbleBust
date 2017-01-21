@@ -3,11 +3,12 @@ var React = require("react");
 
 // Creating the Login component
 var Result = React.createClass({	
-	render: function() {
-	    return (
+	render: function(){
+        return(
             <div id="page-container" className="container">
 
                 <div id="search-results" className="row">
+
                     {this.props.tweets.map(function(tweets, i) {
                         return (
                             <div id={i} key={i} className="article col-xs-12 col-sm-6  col-md-4 " type="box" id="article-box">
@@ -21,8 +22,8 @@ var Result = React.createClass({
                     })};
                 </div>
             </div>
-	    )
-	}
+        )
+    }
 });
 
 // Export the component back for use in other files
