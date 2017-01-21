@@ -38,7 +38,7 @@ function saveArticle() {
 	  });
 	});	
 }
-
+   
 function displayArticles() {
 			// Initially sets the articleCounter to 0
 		articleCounter = 0;

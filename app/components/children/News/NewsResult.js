@@ -1,6 +1,8 @@
 // Include React
 var React = require("react");
+//var NewsNavigation = require("./NewsNavigation")
 var SaveItem = require('./NewsItems/SaveItem');
+var Notification = require('./Notification');
 // Helper Function
 var helpers = require('../../utils/helpers');
 
@@ -10,9 +12,8 @@ var NewsResult = React.createClass({
 
     getInitialState: function(){
         return {
-            results: [],
+            ListOfArticles: [],
             modalIsOpen: false,
-            type: "",
             message: ""
         }
     },
@@ -20,7 +21,6 @@ var NewsResult = React.createClass({
     // This function will respond to the user click
     handleClick: function(event){
 
-            // Search for articles
             helpers.getSaved()
                 .then(function(data){
                     if (data === false) {
@@ -29,32 +29,63 @@ var NewsResult = React.createClass({
                     } else {
                         // Save data to state
                         this.setState({
-                            results: data
+                            ListOfArticles: data
                         });
                     }
-                }.bind(this))       
+                }.bind(this))  
+
+    },
+    openModal: function() {
+        this.setState({modalIsOpen: true});
+    },
+
+    closeModal: function() {
+        this.setState({modalIsOpen: false});
+    },
+
+    message: function(type,text) {
+    // Set text
+        this.setState({
+            type: type,
+                message: text
+            });
+        // Show modal
+            this.openModal();
     },
 
     saved: function(status) {
         if (status === 'saved') {
-        // Show successfully saved message
-            this.message('Successfully Saved','Click "Saved Articles" in navigation to review.');
+            // Show successfully saved message
+                this.message('Successfully Saved','Click "Saved Articles" in navigation to review.');
         } else {
-        // Show successfully saved message
-            this.message('Error','Article was already saved.');
+            // Show successfully saved message
+                this.message('Error','Article was already saved.');
         }
         return
     },
-
 	render: function() {
+        var saved = this.saved;
 	    return (
 
                 <div className="panel-body">
-                    <ul className="list-group" id="wellSection">
-
-                        {this.props.children}
-
+                    <ul className="list-group">
+                        {this.props.ListOfArticles.map(function(result) {
+                            return (
+                                <SaveItem 
+                                    key={result._id}
+                                    title={result.title}
+                                    link={result.link}
+                                    pubDate={result.pubDate}
+                                    saved={saved}                                    
+                                />
+                            )
+                        })}
                     </ul>
+                     <Notification
+                        modalIsOpen={this.state.modalIsOpen}
+                        openModal={this.openModal}
+                        closeModal={this.closeModal}
+                        message={this.state.message} />
                 </div>
 	    )
 	}

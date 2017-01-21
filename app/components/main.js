@@ -10,7 +10,7 @@ var Result = require("./children/Result.js");
 var Footer = require("./children/Footer.js");
 
 var NewsNavigation = require("./children/News/NewsNavigation.js");
-var News = require("./children/News.js");
+//var News = require("./children/News.js");
 var NewsResult = require("./children/News/NewsResult.js");
 
 // Creating the Results component

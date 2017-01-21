@@ -6,6 +6,7 @@ var currentdate = new Date();
 module.exports = function(app) {
 	// A GET request to scrape the News websites
 	app.get('/scrapeNPR', function(req, res) {
+
 	  var entry = [];
 	  request("https://www.npr.org/sections/politics/", function(error, response, html) {
 	    // Then, we load that into cheerio and save it to $ for a shorthand selector
@@ -110,6 +111,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/scrapeHuff', function(req, res) {
+		console.log("got req scrap");
 	  var entry = [];
 	  request("http://www.huffingtonpost.com/section/politics", function(error, response, html) {
 	  // Then, we load that into cheerio and save it to $ for a shorthand selector

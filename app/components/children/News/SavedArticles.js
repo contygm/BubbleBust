@@ -2,9 +2,8 @@
 var React = require('react');
 
 // Include React Components
-var NewsResult = require('./NewsResult');
 var DeleteItem = require('./NewsItems/DeleteItem');
-
+var Notification = require('./Notification');
 
 // Helper Function
 var helpers = require('../../utils/helpers');
@@ -15,7 +14,6 @@ var SavedArticles = React.createClass({
 		return {
 			results: [],
 			modalIsOpen: false,
-			type: "",
 			message: ""
 		}
 	},
@@ -36,6 +34,23 @@ var SavedArticles = React.createClass({
 				}
 			}.bind(this))	
 	},
+  openModal: function() {
+    this.setState({modalIsOpen: true});
+  },
+
+  closeModal: function() {
+    this.setState({modalIsOpen: false});
+  },
+
+  message: function(type,text) {
+  	// Set text
+  	this.setState({
+  		type: type,
+			message: text
+		});
+		// Show modal
+		this.openModal();
+  },
 
   deleted: function(status) {
   	if (status === 'error') {
@@ -44,7 +59,6 @@ var SavedArticles = React.createClass({
   	}
 		return
   },
-
 	// Here we render the function
 	render: function(){
 
@@ -52,21 +66,23 @@ var SavedArticles = React.createClass({
 
 		return(
 			<div>
-				<NewsResult fa="fa fa-download" text="Saved Articles">
-		  		{this.state.results.map(function(result) {
-			  		return (
-			  			<DeleteItem 
-			  				key={result._id}
-			  				id={result._id}
-			  				title={result.title}
-			  				link={result.link}
-			  				pubDate={result.pubDate}
-			  				deleted={deleted}
-			  			/>
-			  		)
-			  	})}
-			  </NewsResult>
 
+                <div className="panel-body">
+                    <ul className="list-group">
+				  		{this.state.results.map(function(result) {
+					  		return (
+					  			<DeleteItem 
+					  				key={result._id}
+					  				id={result._id}
+					  				title={result.title}
+					  				link={result.link}
+					  				pubDate={result.pubDate}
+					  				deleted={deleted}
+					  			/>
+					  		)
+					  	})}
+                    </ul>
+                </div>
 			</div>
 		)
 	}
