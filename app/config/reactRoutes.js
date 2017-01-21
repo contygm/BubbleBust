@@ -26,9 +26,8 @@ var Twitter = require("../components/children/Twitter");
 var Result = require("../components/children/Result");
 
 var News = require("../components/children/News");
-var NewsNavigation = require("./components/children/News/NewsNavigation");
-var Saved = require('./components/children/News/SavedArticles');
-var NewsResult = require('./components/children/News/NewsResult');
+var Saved = require('./components/children/SavedArticles');
+var NewsResult = require('./components/children/NewsResult');
 
 // Export the Routes
 module.exports = (
@@ -41,7 +40,7 @@ module.exports = (
 
       {/* If user selects Child1 then show the appropriate component*/}
 
-      <Route path='news' component={NewsNavigation} />
+      <Route path='news' component={News} />
       <Route path='saved' component={Saved} />
 
       {/* If user selects Child2 then show the appropriate component*/}

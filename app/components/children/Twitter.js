@@ -20,9 +20,6 @@ var Twitter = React.createClass({
 				this.setState({tweetData: data.data})
 			}.bind(this));
 	},
-	// componentDidUpdate: function(){
-	// 	;
-	// },
 
 	handleClick: function(event){
 		event.preventDefault();

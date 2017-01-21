@@ -11,14 +11,7 @@ var Result = require("../components/children/Result");
 
 // Creating the Results component
 var Main = React.createClass({
-	// getInitialState: function(){
-	// 	return {
-	// 		resultData: [],
-	// 	}
-	// },
-	// setResults: function(data){
-	// 	this.setState({resultData: data})
-	// },
+	
 	// Here we render the function
 	render: function() {
 		return (
@@ -53,8 +46,9 @@ var Main = React.createClass({
 
 						<ul className="nav nav-pills nav-justified col-xs-12">
 
-					        <li><a id="mediaOne" href="#/News">News</a></li>
+					        <li><a id="mediaOne" href="#/news">News</a></li>
 					        <li><a id="mediaOne" href="#/Twitter">Twitter</a></li>
+					        <li><a id="mediaOne" href="#/saved">News</a></li>
 							
 				      	</ul>
 						
