@@ -20,10 +20,15 @@ var IndexRoute = router.IndexRoute;
 
 // Reference the high-level components
 var Main = require("../components/main");
-var News = require("../components/children/News");
-var Twitter = require("../components/children/Twitter");
 var Login = require("../components/children/Login");
+
+var Twitter = require("../components/children/Twitter");
 var Result = require("../components/children/Result");
+
+var News = require("../components/children/News");
+var NewsNavigation = require("./components/children/News/NewsNavigation");
+var Saved = require('./components/children/News/SavedArticles');
+var NewsResult = require('./components/children/News/NewsResult');
 
 // Export the Routes
 module.exports = (
@@ -35,13 +40,9 @@ module.exports = (
     	<Route path="Login" component={Login} />
 
       {/* If user selects Child1 then show the appropriate component*/}
-      <Route path="News" component={News} >
 
-        <Route path="Result" component={Result} />
-
-        <IndexRoute component={News} />
-
-      </Route>
+      <Route path='news' component={NewsNavigation} />
+      <Route path='saved' component={Saved} />
 
       {/* If user selects Child2 then show the appropriate component*/}
       <Route path="Twitter" component={Twitter} >
@@ -49,7 +50,6 @@ module.exports = (
       
   		  <Route path="Result" component={Result} />
 
-        <IndexRoute component={Twitter} />
       
       </Route>
 
