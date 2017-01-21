@@ -1,5 +1,6 @@
 // Include React
 var React = require("react");
+var helpers = require('../../config/helpers');
 
 var NewsResult = require("./NewsResult");
 // Creating the Navigation component

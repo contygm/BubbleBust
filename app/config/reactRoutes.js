@@ -26,8 +26,8 @@ var Twitter = require("../components/children/Twitter");
 var Result = require("../components/children/Result");
 
 var News = require("../components/children/News");
-var Saved = require('./components/children/SavedArticles');
-var NewsResult = require('./components/children/NewsResult');
+var Saved = require('../components/children/SavedArticles');
+var NewsResult = require('../components/children/NewsResult');
 
 // Export the Routes
 module.exports = (

@@ -17,7 +17,7 @@ var customStyles = {
 
 var headerStyles = {
   background: '#2c3e50',
-  color: '#f7f8f9',
+  color: 'black',
   padding: '15px'
 }
 

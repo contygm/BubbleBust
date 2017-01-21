@@ -2,7 +2,7 @@
 var React = require('react');
 
 // Helper Function
-var helpers = require('../../../utils/helpers');
+var helpers = require('../../../config/helpers');
 
 var ListItem = React.createClass({
 

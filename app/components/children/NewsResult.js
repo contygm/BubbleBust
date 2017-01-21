@@ -4,7 +4,7 @@ var React = require("react");
 var SaveItem = require('./NewsItems/SaveItem');
 var Notification = require('./Notification');
 // Helper Function
-var helpers = require('../config/helpers');
+var helpers = require('../../config/helpers');
 
 
 // Creating the Login component

@@ -49,4 +49,3 @@ module.exports = function(app) {
 			})
 	})
 }
-Contact GitHub API Training Shop Blog About

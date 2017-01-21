@@ -8,10 +8,10 @@ var mongoose = require("mongoose");
 var request = require("request");
 var cheerio = require("cheerio");
 //scrape routes
-require("./controllers/scrape-routes.js")(app);
+//require("./controllers/scrape-routes.js")(app);
 // -------------------------------------------------
 // mongoose logic goes here
-require("./controllers/api-routes.js")(app);
+//require("./controllers/api-routes.js")(app);
 
 // Mongoose mpromise deprecated - use bluebird promises
 var Promise = require("bluebird");

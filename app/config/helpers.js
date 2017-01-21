@@ -1,9 +1,6 @@
 
 var axios = require("axios");
 
-// Current base URL
-var baseURL = window.location.origin;
-
 var helper = {
   getMyTweets: function(route) {
   	console.log(route);
@@ -17,7 +14,7 @@ var helper = {
 
   saveArticle: function(article){
 
-		var queryURL = baseURL + '/api/saved';
+		var queryURL = '/api/saved';
 
 		return axios.post(queryURL, {
 			'title': article.title,
@@ -34,7 +31,7 @@ var helper = {
 
 	getSaved: function(){
 
-		var queryURL = baseURL + '/api/saved';
+		var queryURL = '/api/saved';
 
 		return axios.get(queryURL)
 			.then(function(res){
@@ -48,7 +45,7 @@ var helper = {
 
 	deleteSaved: function(id){
 
-		var queryURL = baseURL + '/api/saved/' + id;
+		var queryURL ='/api/saved/' + id;
 
 		return axios.delete(queryURL)
 			.then(function(res){

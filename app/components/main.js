@@ -11,6 +11,8 @@ var Result = require("../components/children/Result");
 
 // Creating the Results component
 var Main = React.createClass({
+
+	
 	
 	// Here we render the function
 	render: function() {
@@ -48,7 +50,7 @@ var Main = React.createClass({
 
 					        <li><a id="mediaOne" href="#/news">News</a></li>
 					        <li><a id="mediaOne" href="#/Twitter">Twitter</a></li>
-					        <li><a id="mediaOne" href="#/saved">News</a></li>
+					        <li><a id="mediaOne" href="#/saved">Saved</a></li>
 							
 				      	</ul>
 						

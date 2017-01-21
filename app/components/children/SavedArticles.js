@@ -6,7 +6,7 @@ var DeleteItem = require('./NewsItems/DeleteItem');
 var Notification = require('./Notification');
 
 // Helper Function
-var helpers = require('../../utils/helpers');
+var helpers = require('../../config/helpers');
 
 var SavedArticles = React.createClass({
 
