@@ -5,23 +5,6 @@ var News = React.createClass({
 	render: function() {
 	    return (
 		    <div>
-		    {/*
-		    <div> 	        
-		      	<div id="tab-bar-news-sources">            
-			        <div id="tab-bar-news-sources-menu">             
-			              <a id="mediaOne" href="">News1</a>                    
-			              <a id="mediaTwo" href="">Media2</a>                
-			              <a id="mediaThree" href="">Media3</a>                    
-			              <a id="mediaFour" href="">Media4</a>                    
-			              <a id="mediaFive" href="">Media5</a>                   
-			              <a id="mediaSix" href="">Media6</a>                    
-			              <a id="mediaSeven" href="">Media7</a>                                         
-			              <a id="mediaTen" href="" className="no-border">Media10</a>      
-			        </div>            
-		      	</div>   
-		      	<div className="seperator"></div>       
-	       	</div>*/}
-	       	
 		       	<ul className="nav nav-pills nav-justified">
 			        <li><a id="mediaOne" href="">News</a></li>
 			        <li><a id="mediaOne" href="">News</a></li>

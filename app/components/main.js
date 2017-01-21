@@ -14,6 +14,9 @@ var Main = React.createClass({
 
 	// Here we render the function
 	render: function() {
+		
+
+
 		return (
 			
 
@@ -60,8 +63,8 @@ var Main = React.createClass({
 			    <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul className="nav nav-pills nav-justified">
 
-				        <li><a id="mediaOne" href="">News</a></li>
-				        <li><a id="mediaOne" href="">Twitter</a></li>
+				        <li><a id="mediaOne" href="#/News">News</a></li>
+				        <li><a id="mediaOne" href="#/Twitter">Twitter</a></li>
 						
 			      	</ul>
 			      	{this.props.children}
@@ -76,7 +79,9 @@ var Main = React.createClass({
 					</form>	
 					
 				</div>
-			</nav>			
+			</nav>	
+
+
 		</div>   
  
 		);

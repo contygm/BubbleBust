@@ -47,7 +47,7 @@ module.exports = (
       <Route path="Twitter" component={Twitter} >
 
       
-  		<Route path="Result" component={Result} />
+  		  <Route path="Result" component={Result} />
 
         <IndexRoute component={Twitter} />
       
