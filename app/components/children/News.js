@@ -4,6 +4,7 @@ var React = require("react");
 var News = React.createClass({	
 	render: function() {
 	    return (
+		    {/*
 		    <div> 	        
 		      	<div id="tab-bar-news-sources">            
 			        <div id="tab-bar-news-sources-menu">             
@@ -18,7 +19,20 @@ var News = React.createClass({
 			        </div>            
 		      	</div>   
 		      	<div className="seperator"></div>       
-	       	</div>
+	       	</div>*/}
+	       	<div>
+		       	<ul className="nav nav-pills nav-justified">
+			        <li><a id="mediaOne" href="">News</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">News</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">News</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+		      	</ul>
+	      	</div>
 	    )
 	}
 });

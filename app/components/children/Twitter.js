@@ -40,6 +40,7 @@ var Twitter = React.createClass({
 
 	render: function() {
 	    return (
+		{/*
 		    <div>
 		      	<div id="tab-bar-news-sources">            
 			        <div id="tab-bar-news-sources-menu">             
@@ -55,7 +56,20 @@ var Twitter = React.createClass({
 		      	</div>   
 		      	<div className="seperator"></div> 
 		      	<Result tweets={this.state.tweetData}/>     
-	       	</div>
+	       	</div>*/}
+	       	<div>
+		       	<ul className="nav nav-pills nav-justified">
+			        <li><a id="mediaOne" href="">Executive</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">News</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">News</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="mediaOne" href="">Twitter</a></li>
+		      	</ul>
+	      	</div>
 	    )
 	}
 });
