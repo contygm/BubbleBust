@@ -22,11 +22,14 @@ h1 {
 
  }
 
+.navbar{
+    margin-bottom: 0;
+}
 
 #date {
 
     float: left;
-    margin: 20px 0px 0px 40px;
+    margin: 20px ;
     font-size: 16px;
     color: white;
 
@@ -84,7 +87,7 @@ h1 {
 
 }
 
-
+/*
 .article-photo {
     border-radius: 50%;
     border: 1px solid #74E0DC;
@@ -92,15 +95,15 @@ h1 {
     height: 100px;
     width: 100px;  
 
-}
+}*/
 
-#bubble-img: hover{ 
+/*#bubble-img: hover{ 
     border-radius: 50%;
     border: 10px dotted #74E0DC;
     height: 150px;
     width: 150px;  
 
-}
+}*/
 
 .article-title {
     float: left;
@@ -108,18 +111,28 @@ h1 {
     font-size: 20px;
     margin-left: 15px;
     margin-bottom: 0px;
+    width: 100%;
 }
 
 .article-title:hover {
     color: #a054d3;
+    
 }
 
+.article-text{
+    font-size: 16px;
+}
+
+.tweet-info{
+    font-size: 12px;
+    color: lightgrey;
+    margin-bottom: 10px;
+}
 
 .article-blurb {
-
-    font-size: 16px;
+    
     float: left;
-    text-align: justify;
+    /*text-align: center;*/
     margin-top:0px;
     margin-right: 25px;
     margin-left: 25px;

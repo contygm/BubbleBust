@@ -5,17 +5,23 @@ var News = React.createClass({
 	render: function() {
 	    return (
 		    <div>
-		       	<ul className="nav nav-pills nav-justified">
-			        <li><a id="mediaOne" href="">News</a></li>
-			        <li><a id="mediaOne" href="">News</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-			        <li><a id="mediaOne" href="">News</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-			        <li><a id="mediaOne" href="">News</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-		      	</ul>
+			    <nav className="navbar nav2" id="add-nav-bar-color">
+			       	<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				       	<ul className="nav nav-pills nav-justified">
+					        <li><a id="mediaOne" href="">The Huffington Post</a></li>
+					        <li><a id="mediaOne" href="">The Guardian</a></li>
+					        <li><a id="mediaOne" href="">NPR</a></li>
+					        <li><a id="mediaOne" href="">BBC</a></li>
+					        <li><a id="mediaOne" href="">CNN</a></li>
+					        <li><a id="mediaOne" href="">The Economist</a></li>
+					        <li><a id="mediaOne" href="">The Hill</a></li>
+					        <li><a id="mediaOne" href="">FOX News</a></li>
+					        <li><a id="mediaOne" href="">The Blaze</a></li>
+				      	</ul>
+				    </div>
+				</nav>
+
+			     <Result />
 	      	</div>
 	    )
 	}
