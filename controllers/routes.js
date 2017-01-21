@@ -70,7 +70,7 @@ function getAllTweets (doc, callback) {
           if (error) {
             return callback(error);
           }
-          if (tweet != null){
+          if (tweet != null && tweet.length > 0){
           	tweets.push(tweet);  
           	count++;
           }
