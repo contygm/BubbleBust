@@ -9,16 +9,16 @@ var Result = React.createClass({
                 <div id="search-results">    
                     {this.props.tweets.map(function(allTweets, i) {
                         return (
-                            <div id={i} key={i} >
+                            <div id={i} key={i} className="row">
                                 {allTweets.map(function(singleTweets, k){
                                     return (
 
-                                        <div id={k} key={k} className="article" type="box"> 
+                                        <div id={k} key={k} className="col s3"> 
                                             
                                             <h2 >{singleTweets.userName}</h2>
                                             <p >{singleTweets.screenName}</p>
-                                            <a className="article-title" href="">{singleTweets.createdAt}</a>
-                                            <p className="article-blurb" >{singleTweets.text}</p>
+                                            <a className="" href="">{singleTweets.createdAt}</a>
+                                            <p className="" >{singleTweets.text}</p>
                                         </div>
                                     )
                                 })} 

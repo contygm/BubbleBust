@@ -64,16 +64,31 @@ function getAllTweets (doc, callback) {
           if (error) {
             return callback(error);
           }
-
-          tweets.push(tweet);  
-          count++;
-
+          if (tweet != null){
+          	tweets.push(tweet);  
+          	count++;
+          }
           if (count === doc.length) {
-            return callback(null, tweets);
+          	var merged = [].concat.apply([], tweets);
+            return callback(null, merged);
           }
         });
     }
 }
+
+// function removeNull(tweets, callback){
+// 	var count = 0,
+// 		newTweets = [];
+
+// 	for (var i = 0; i < tweets.length; i++){
+// 		if (tweets[i] != null){
+// 			newTweets.push(tweets[i]);
+// 			count++
+// 		}
+
+
+// 	}
+// }
 
 
 router.get("/Twitter/:collection/:branch", function(req, res) {
