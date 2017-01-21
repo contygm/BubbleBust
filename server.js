@@ -3,13 +3,26 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
-// var json = require("json!./file.json");
+
+// Our scraping tools
+var request = require("request");
+var cheerio = require("cheerio");
+//scrape routes
+require("./controllers/scrape-routes.js")(app);
+// -------------------------------------------------
+// mongoose logic goes here
+require("./controllers/api-routes.js")(app);
+
+// Mongoose mpromise deprecated - use bluebird promises
+var Promise = require("bluebird");
+mongoose.Promise = Promise;
 
 // Require Schemas
 var Executive = require("./models/Executive");
 var Legislative = require("./models/Legislative");
 var Organization = require("./models/Organization");
 var Parties = require("./models/Parties");
+var Article = require("./models/Article");
 
 // Create Instance of Express
 var app = express();
