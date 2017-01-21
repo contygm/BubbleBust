@@ -40,7 +40,10 @@ var Twitter = React.createClass({
 
 	render: function() {
 	    return (
-		{/*
+		
+	       	<div>
+
+	       	{/*
 		    <div>
 		      	<div id="tab-bar-news-sources">            
 			        <div id="tab-bar-news-sources-menu">             
@@ -57,17 +60,15 @@ var Twitter = React.createClass({
 		      	<div className="seperator"></div> 
 		      	<Result tweets={this.state.tweetData}/>     
 	       	</div>*/}
-	       	<div>
 		       	<ul className="nav nav-pills nav-justified">
-			        <li><a id="mediaOne" href="">Executive</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-			        <li><a id="mediaOne" href="">News</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-			        <li><a id="mediaOne" href="">News</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
-			        <li><a id="mediaOne" href="">Twitter</a></li>
+			        <li><a id="Executive" href="/Twitter/Executive/Executive" onClick={this.handleClick}>Executive Branch</a></li>
+			        <li><a id="Judicial" href="/Twitter/Executive/Judicial" onClick={this.handleClick}>Supreme Court</a></li>
+			        <li><a id="Senator" href="/Twitter/Legislative/Senator" onClick={this.handleClick}>Senate</a></li>
+			        <li><a id="Agency" href="/Twitter/Organization/Agency" onClick={this.handleClick}>Government Departments</a></li>
+			        <li><a id="Parties" href="/Twitter/Parties/Parties" onClick={this.handleClick}>Political Parties</a></li>
+			        <li><a id="Research" href="/Twitter/Organization/Research" onClick={this.handleClick}>Research Organizations</a></li>
+			        <li><a id="Non-Profit" href="/Twitter/Organization/Non-Profit" onClick={this.handleClick}>Non-Profits</a></li>
+			        <li><a id="ThinkTank" href="/Twitter/Organization/ThinkTank" onClick={this.handleClick} className="no-border">Think Tanks</a></li>
 		      	</ul>
 	      	</div>
 	    )
