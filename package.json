@@ -25,6 +25,7 @@
     "react-modal": "^1.6.4",
     "react-router": "^3.0.0",
     "request": "^2.79.0",
+    "twitter": "^1.7.0",
     "webpack-dev-server": "^1.16.2"
   },
   "devDependencies": {
