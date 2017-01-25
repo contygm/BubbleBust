@@ -33,12 +33,12 @@ var Twitter = React.createClass({
 		       		
 			       	<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				       	<ul className="nav nav-pills nav-justified">
-					        <li><a id="Executive" href="/Twitter/Executive/Executive" onClick={this.handleClick}>Executive Branch</a></li>
+					        {/*<li><a id="Executive" href="/Twitter/Executive/Executive" onClick={this.handleClick}>Executive Branch</a></li> */}
 					        <li><a id="Judicial" href="/Twitter/Executive/Judicial" onClick={this.handleClick}>Supreme Court</a></li>
 					        <li><a id="Senator" href="/Twitter/Legislative/Senator" onClick={this.handleClick}>Senate</a></li>
 					        <li><a id="Agency" href="/Twitter/Organization/Agency" onClick={this.handleClick}>Gov't Agency</a></li>
-					        <li><a id="Parties" href="/Twitter/Parties/Parties" onClick={this.handleClick}>Political Parties</a></li>
-					        <li><a id="Research" href="/Twitter/Organization/Research" onClick={this.handleClick}>Research Organizations</a></li>
+					        {/*<li><a id="Parties" href="/Twitter/Parties/Parties" onClick={this.handleClick}>Political Parties</a></li>*/}
+					        {/*<li><a id="Research" href="/Twitter/Organization/Research" onClick={this.handleClick}>Research Organizations</a></li>*/}
 					        <li><a id="Non-Profit" href="/Twitter/Organization/Non-Profit" onClick={this.handleClick}>Non-Profits</a></li>
 					        <li><a id="ThinkTank" href="/Twitter/Organization/ThinkTank" onClick={this.handleClick} className="no-border">Think Tanks</a></li>
 				      	</ul>

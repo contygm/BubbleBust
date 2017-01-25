@@ -64,7 +64,7 @@ function getAllTweets (doc, callback) {
     var count = 0,
         tweets = [];
 
-    for (var i = 0; i < doc.length || i =< 25 ; i++){
+    for (var i = 0; i < doc.length; i++){
         getTweet(doc[i].handle, function (error, tweet) {
           if (error) {
             return callback(error);
@@ -76,7 +76,7 @@ function getAllTweets (doc, callback) {
           if (count === doc.length) {
           	// concat tweet array, sort most recent by date
           	var merged = [].concat.apply([], tweets)
-            var mergedSort = merge.sort(function(a,b) { 
+            var mergedSort = merged.sort(function(a,b) { 
   				    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   				    })
             
