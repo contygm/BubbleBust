@@ -1,7 +1,7 @@
 # BubbleBust
 Information hub and MERN App
 
-[View on Heroku](polar-bayou-79322.herokuapp.com)
+[View on Heroku](https://polar-bayou-79322.herokuapp.com/)
 
 ##Functionality Images
 
