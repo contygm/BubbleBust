@@ -12,14 +12,6 @@ var Twitter = React.createClass({
 			tweetData: [],
 		}
 	},
-	componentDidMount: function(){
-		var route = "/Twitter/Executive/Executive";
-		helpers.getMyTweets(route)
-			.then(function(data){
-				console.log("Mongo Data: ", data.data)
-				this.setState({tweetData: data.data})
-			}.bind(this));
-	},
 
 	handleClick: function(event){
 		event.preventDefault();
@@ -38,6 +30,7 @@ var Twitter = React.createClass({
 		
 	       	<div>
 		       	<nav className="navbar nav2" id="add-nav-bar-color">
+		       		
 			       	<div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				       	<ul className="nav nav-pills nav-justified">
 					        <li><a id="Executive" href="/Twitter/Executive/Executive" onClick={this.handleClick}>Executive Branch</a></li>

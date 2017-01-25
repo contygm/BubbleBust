@@ -15,10 +15,9 @@ h1 {
 
  }
 
- #add-nav-bar-color li:hover {
+ #add-nav-bar-color li a:hover {
 
     background-color: #abecea;
-
 
  }
 

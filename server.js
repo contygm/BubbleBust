@@ -1,4 +1,4 @@
-// Include Server Dependencies
+//include Server Dependencies
 var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
@@ -43,7 +43,7 @@ app.use(express.static("./public"));
 
 //mongodb://heroku_nhk3bbmv:7dml376seb3b2ousnha7pg75s@ds155418.mlab.com:55418/heroku_nhk3bbmv
 //localhost/bubbleBust
-mongoose.connect("mongodb://localhost/bubbleBust2");
+mongoose.connect("mongodb://heroku_nhk3bbmv:7dml376seb3b2ousnha7pg75s@ds155418.mlab.com:55418/heroku_nhk3bbmv");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
