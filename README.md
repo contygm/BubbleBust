@@ -28,10 +28,10 @@ Information hub and MERN App
 
 ###*Design Team*
 
-Dore C.
-Mary M.
+- Dore C. @DorieO
+- Mary M. @marymiller1954
 
 ###*Backend/React Team*
 
-Tatiana G.
-Genevieve C. @contygm
+- Tatiana G. @tsg1204
+- Genevieve C. @contygm
