@@ -11,8 +11,6 @@ var Result = require("../components/children/Result");
 
 // Creating the Results component
 var Main = React.createClass({
-
-	
 	
 	// Here we render the function
 	render: function() {
@@ -36,15 +34,15 @@ var Main = React.createClass({
 						
 				      	
 						
-				    	<p  id="date">January 21, 2017</p>
-						<form className="navbar-form navbar-right col-xs-12 col-sm-6 col-md-4 col-lg-3" role="search">
+				    	<p  id="date">{new Date().toDateString()}</p>
+						{/*<form className="navbar-form navbar-right col-xs-12 col-sm-6 col-md-4 col-lg-3" role="search">
 							 
 	  							<div className="form-group">							
 	    							<input type="text" className="form-control" id="search" placeholder="Search"/>
 	  							</div>
 	  							<button type="submit" id="submit" className="btn btn-default">Go</button>
 	  							<button type="button" className="btn btn-default navbar-btn" id="login">Login</button>
-						</form>	
+						</form>	*/}
 
 						<ul className="nav nav-pills nav-justified col-xs-12">
 

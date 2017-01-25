@@ -8,7 +8,6 @@ var request = require("request");
 var cheerio = require("cheerio");
 var currentdate = new Date();
 var mongoose = require('mongoose');
-
 var SavedArticle = require('../models/Article');
 
 // Require Schemas
@@ -76,12 +75,13 @@ function getAllTweets (doc, callback) {
           }
           if (count === doc.length) {
           	// concat tweet array, sort most recent by date
-          	var merged = [].concat.apply([], tweets).sort(function(a,b) { 
-				    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-				})
+          	var merged = [].concat.apply([], tweets)
+            var mergedSort = merged.sort(function(a,b) { 
+  				    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  				    })
             
             // return lastest 100
-            return callback(null, merged.slice(0, 100));
+            return callback(null, mergedSort.slice(0, 50));
           }
         });
     }
@@ -111,7 +111,7 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
                             return res.send(error);
                         }
 
-                        return res.json(result); 
+                        return res.send(result); 
                     });
 			    }
 			});
@@ -128,7 +128,7 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
                             return res.send(error);
                         }
 
-                        return res.json(result); 
+                        return res.send(result); 
                     });
 			    }
 			});
@@ -145,7 +145,7 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
                             return res.send(error);
                         }
 
-                        return res.json(result); 
+                        return res.send(result); 
                     });
 			    }
 			});
@@ -162,7 +162,7 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
                             return res.send(error);
                         }
 
-                        return res.json(result); 
+                        return res.send(result); 
                     });
 			    }
 			});
