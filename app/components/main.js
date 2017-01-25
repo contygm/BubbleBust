@@ -11,22 +11,6 @@ var Result = require("../components/children/Result");
 
 // Creating the Results component
 var Main = React.createClass({
-	getInitialState: function(){
-		return {
-			date: ""
-		}
-	},
-
-	componentDidMount: function(){
-		var d = new Date();
-		var year = d.getFullYear().toString();
-		var day = d.getDate().toString();
-		var month = (d.getMonth()+1).toString();
-		var date = month +"/"+ day +"/"+ year;
-		console.log(date);
-		return date;
-	},
-	
 	
 	// Here we render the function
 	render: function() {
@@ -50,7 +34,7 @@ var Main = React.createClass({
 						
 				      	
 						
-				    	<p  id="date">{new Date().toString()}</p>
+				    	<p  id="date">{new Date().toDateString()}</p>
 						{/*<form className="navbar-form navbar-right col-xs-12 col-sm-6 col-md-4 col-lg-3" role="search">
 							 
 	  							<div className="form-group">							

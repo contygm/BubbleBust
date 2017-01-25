@@ -64,7 +64,7 @@ function getAllTweets (doc, callback) {
     var count = 0,
         tweets = [];
 
-    for (var i = 0; i < doc.length; i++){
+    for (var i = 0; i < doc.length || i =< 25 ; i++){
         getTweet(doc[i].handle, function (error, tweet) {
           if (error) {
             return callback(error);
@@ -76,12 +76,12 @@ function getAllTweets (doc, callback) {
           if (count === doc.length) {
           	// concat tweet array, sort most recent by date
           	var merged = [].concat.apply([], tweets)
-          //   sort(function(a,b) { 
-  				    // return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  				    // })
+            var mergedSort = merge.sort(function(a,b) { 
+  				    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  				    })
             
             // return lastest 100
-            return callback(null, merged.slice(0, 50));
+            return callback(null, mergedSort.slice(0, 50));
           }
         });
     }
@@ -111,7 +111,7 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
                             return res.send(error);
                         }
 
-                        return res.json(result); 
+                        return res.send(result); 
                     });
 			    }
 			});
@@ -128,7 +128,7 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
                             return res.send(error);
                         }
 
-                        return res.json(result); 
+                        return res.send(result); 
                     });
 			    }
 			});
@@ -145,7 +145,7 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
                             return res.send(error);
                         }
 
-                        return res.json(result); 
+                        return res.send(result); 
                     });
 			    }
 			});
@@ -162,7 +162,7 @@ router.get("/Twitter/:collection/:branch", function(req, res) {
                             return res.send(error);
                         }
 
-                        return res.json(result); 
+                        return res.send(result); 
                     });
 			    }
 			});
